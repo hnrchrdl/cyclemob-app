@@ -1,26 +1,34 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Button,
-  Dimensions,
-  TextInput,
-  ToolbarAndroid,
-  Platform
-} from 'react-native';
-import Map from './Map';
-import { Constants } from 'expo';
+import { StyleSheet, View, Button, Dimensions, Platform } from 'react-native';
 
-import Icon from 'react-native-vector-icons/Ionicons';
+import Map from './Map';
+import Navbar from './Navbar';
+import Search from './Search';
+import { Constants } from 'expo';
 
 const { width } = Dimensions.get('window');
 const TOOLBAR_HEIGHT = 56;
+
 export default class App extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      followUser: true
+      followUser: true,
+      showSearch: false,
+      marker: []
     };
+  }
+
+  componentDidMount() {
+    // navigator.geolocation.watchPosition(
+    //   pos => {
+    //     console.log('watch position', pos);
+    //   },
+    //   err => {
+    //     console.error(err);
+    //   },
+    //   { enableHighAccuracy: true, timeout: 25000, maximumAge: 3600000 }
+    // );
   }
 
   toggleFollowUser = () => {
@@ -29,26 +37,39 @@ export default class App extends React.Component {
     }));
   };
 
+  handleSearchAction = () => {
+    this.setState(state => ({
+      showSearch: !state.showSearch
+    }));
+  };
+
+  onLocationSelected = item => {
+    this.setState(state => ({
+      showSearch: false,
+      marker: [
+        ...state.marker,
+        {
+          id: item.id,
+          place_id: item.place_id,
+          title: item.name,
+          description: item.vicinity,
+          coordinate: {
+            latitude: item.geometry.location.lat,
+            longitude: item.geometry.location.lng
+          }
+        }
+      ]
+    }));
+  };
+
   render() {
-    const { followUser } = this.state;
+    const { followUser, showSearch } = this.state;
     return (
       <View style={styles.containerApp}>
-        <View style={styles.containerToolbar}>
-          <ToolbarAndroid
-            style={styles.toolbar}
-            title="Cyclemob"
-            actions={[
-              {
-                title: 'Search',
-                iconName: 'md-cog',
-                show: 'always'
-              }
-            ]}
-            // titleColor={'#eee'}
-          />
-        </View>
+        <Navbar handleSearchAction={this.handleSearchAction} />
         <View style={styles.containerMap}>
-          <Map followUser={followUser} />
+          <Map followUser={followUser} marker={this.state.marker} />
+          {showSearch && <Search onItemSelect={this.onLocationSelected} />}
           <View style={styles.btnFollowUserToggleContainer}>
             <Button
               style={styles.btnFollowUserToggle}
@@ -69,25 +90,12 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   containerApp: {
-    flex: 1
-  },
-  containerToolbar: {
     marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
-    height: TOOLBAR_HEIGHT,
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'stretch'
-  },
-  toolbar: {
-    backgroundColor: '#fff',
-    height: TOOLBAR_HEIGHT
+    flex: 1
   },
   containerMap: {
     position: 'absolute',
-    top:
-      Platform.OS === 'ios'
-        ? TOOLBAR_HEIGHT
-        : Constants.statusBarHeight + TOOLBAR_HEIGHT,
+    top: TOOLBAR_HEIGHT,
     left: 0,
     right: 0,
     bottom: 0,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
-import MapView, { MAP_TYPES, UrlTile } from 'react-native-maps';
+import MapView, { MAP_TYPES, UrlTile, Marker } from 'react-native-maps';
 
 const { width, height } = Dimensions.get('window');
 
@@ -23,7 +23,6 @@ class Map extends React.Component {
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       pos => {
-        console.log(pos);
         const { latitude, longitude } = pos.coords;
         if (!this.state.initialRegion) {
           this.setState({
@@ -37,7 +36,7 @@ class Map extends React.Component {
         }
       },
       err => {
-        console.err(err);
+        console.error(err);
       },
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
@@ -49,6 +48,10 @@ class Map extends React.Component {
 
   render() {
     const { initialRegion } = this.state;
+    const { followUser, marker } = this.props;
+
+    console.log(marker);
+
     if (!initialRegion) {
       return null;
     }
@@ -58,10 +61,17 @@ class Map extends React.Component {
         mapType={MAP_TYPES.NONE}
         initialRegion={initialRegion}
         showsUserLocation
-        followsUserLocation={this.state.followUser}
+        followsUserLocation={followUser}
         onLongPress={this.handleMapLongPress}
       >
         <UrlTile urlTemplate={TILE_URLS.ocm} zIndex={-1} />
+        {marker.map(_marker => (
+          <Marker
+            key={_marker.id}
+            coordinate={_marker.coordinate}
+            title={_marker.title}
+          />
+        ))}
       </MapView>
     );
   }
