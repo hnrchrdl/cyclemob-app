@@ -2,7 +2,6 @@ import React from 'react';
 import {
   StyleSheet,
   FlatList,
-  KeyboardAvoidingView,
   View,
   Text,
   TextInput,
@@ -12,7 +11,7 @@ import {
   getPlacesAutocomplete,
   getPlaceDetails,
   createSessionToken
-} from './lib';
+} from '../lib/lib';
 import { debounce } from 'lodash';
 
 class SearchResultItem extends React.Component {
@@ -92,12 +91,12 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
     padding: 20,
     flex: 1,
     borderTopColor: '#eee',
     borderTopWidth: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    opacity: 0.9
   },
   resultContainer: {
     borderTopColor: '#eee',

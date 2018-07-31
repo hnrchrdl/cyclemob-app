@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
 import MapView, { MAP_TYPES, UrlTile, Marker } from 'react-native-maps';
+import { thunderforest_api_key } from '../env';
 
 const { width, height } = Dimensions.get('window');
 
@@ -8,38 +9,33 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const TILE_URLS = {
-  ocm:
-    'https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=61444b383bbc468dbd554f7257efd5f3'
+  ocm: `https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforest_api_key}`
 };
 
 class Map extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      iniitalRegion: null
+      initialRegion: null
     };
   }
 
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        const { latitude, longitude } = pos.coords;
-        if (!this.state.initialRegion) {
-          this.setState({
-            initialRegion: {
-              latitude,
-              longitude,
-              latitudeDelta: LATITUDE_DELTA,
-              longitudeDelta: LONGITUDE_DELTA
-            }
-          });
+  shouldComponentUpdate(props) {
+    const { initialRegion } = this.state;
+    const { position } = props;
+    if (!initialRegion && position) {
+      const { latitude, longitude } = position.coords;
+      this.setState({
+        initialRegion: {
+          latitude,
+          longitude,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA
         }
-      },
-      err => {
-        console.error(err);
-      },
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
+      });
+      return true;
+    }
+    return false;
   }
 
   handleMapLongPress = e => {
@@ -49,8 +45,6 @@ class Map extends React.Component {
   render() {
     const { initialRegion } = this.state;
     const { followUser, marker } = this.props;
-
-    console.log(marker);
 
     if (!initialRegion) {
       return null;

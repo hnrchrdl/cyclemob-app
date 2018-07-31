@@ -1,9 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Button, Dimensions, Platform } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Button,
+  Dimensions,
+  Platform,
+  Text
+} from 'react-native';
 
-import Map from './Map';
-import Navbar from './Navbar';
-import Search from './Search';
+import Map from './components/Map';
+import Navbar from './components/Navbar';
+import Search from './components/Search';
 import { Constants } from 'expo';
 
 const { width } = Dimensions.get('window');
@@ -15,20 +22,28 @@ export default class App extends React.Component {
     this.state = {
       followUser: true,
       showSearch: false,
-      marker: []
+      marker: [],
+      position: null
     };
   }
 
   componentDidMount() {
-    // navigator.geolocation.watchPosition(
-    //   pos => {
-    //     console.log('watch position', pos);
-    //   },
-    //   err => {
-    //     console.error(err);
-    //   },
-    //   { enableHighAccuracy: true, timeout: 25000, maximumAge: 3600000 }
-    // );
+    navigator.geolocation.watchPosition(
+      position => {
+        this.setState({
+          position
+        });
+      },
+      err => {
+        console.error(err);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 36000,
+        distanceFilter: 1
+      }
+    );
   }
 
   toggleFollowUser = () => {
@@ -63,13 +78,20 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { followUser, showSearch } = this.state;
+    const { position, followUser, showSearch } = this.state;
     return (
       <View style={styles.containerApp}>
         <Navbar handleSearchAction={this.handleSearchAction} />
         <View style={styles.containerMap}>
-          <Map followUser={followUser} marker={this.state.marker} />
+          <Map
+            followUser={followUser}
+            marker={this.state.marker}
+            position={position}
+          />
           {showSearch && <Search onItemSelect={this.onLocationSelected} />}
+          <View style={styles.containerMoveInfo}>
+            {position && <Text>{position.coords.speed} km/h</Text>}
+          </View>
           <View style={styles.btnFollowUserToggleContainer}>
             <Button
               style={styles.btnFollowUserToggle}
@@ -107,6 +129,14 @@ const styles = StyleSheet.create({
     bottom: 0,
     flex: 1,
     width: width
+  },
+  containerMoveInfo: {
+    position: 'absolute',
+    bottom: 50,
+    flex: 1,
+    width: width,
+    padding: 10,
+    backgroundColor: '#fff'
   },
   btnFollowUserToggle: {}
 });
