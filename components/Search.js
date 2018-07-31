@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import {
   getPlacesAutocomplete,
   getPlaceDetails,
@@ -61,25 +62,40 @@ class Search extends React.PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput
-          autoFocus
-          style={styles.textInput}
-          placeholder="City / POI"
-          onChangeText={debounce(this.onSearchTextChange, 800)}
-        />
-        <View style={styles.resultContainer}>
-          <FlatList
-            data={this.state.result}
-            renderItem={({ item }) => (
-              <SearchResultItem
-                key={item.place_id}
-                item={item}
-                onItemSelect={this.onSearchResultSelect}
-              />
-            )}
-            keyboardShouldPersistTaps="handled"
-          />
+        <View style={styles.inputContainer}>
+          <View style={{ flex: 0 }}>
+            <MaterialIcons name="search" size={20} />
+          </View>
+          <View style={{ flex: 1 }}>
+            <TextInput
+              autoFocus
+              style={styles.textInput}
+              placeholder="City / POI"
+              onChangeText={debounce(this.onSearchTextChange, 800)}
+            />
+          </View>
+          <TouchableOpacity
+            style={{ flex: 0, padding: 10 }}
+            onPress={this.props.onClose}
+          >
+            <Text>Close</Text>
+          </TouchableOpacity>
         </View>
+        {this.state.result.length > 0 && (
+          <View style={styles.resultContainer}>
+            <FlatList
+              data={this.state.result}
+              renderItem={({ item }) => (
+                <SearchResultItem
+                  key={item.place_id}
+                  item={item}
+                  onItemSelect={this.onSearchResultSelect}
+                />
+              )}
+              keyboardShouldPersistTaps="handled"
+            />
+          </View>
+        )}
       </View>
     );
   }
@@ -87,25 +103,25 @@ class Search extends React.PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
     padding: 20,
-    flex: 1,
-    borderTopColor: '#eee',
-    borderTopWidth: 1,
     backgroundColor: '#fff',
-    opacity: 0.9
+    opacity: 0.95
+  },
+  inputContainer: {
+    flex: 1,
+    flexDirection: 'row'
   },
   resultContainer: {
     borderTopColor: '#eee',
     borderTopWidth: 1,
-    marginTop: 15,
-    paddingBottom: 15
+    marginTop: 20
   },
   textInput: {
-    height: 40
+    height: 40,
+    paddingBottom: 20,
+    marginLeft: -20,
+    paddingLeft: 30,
+    marginRight: 10
   },
   resultItem: {
     marginTop: 10,

@@ -12,50 +12,53 @@ const TILE_URLS = {
   ocm: `https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforest_api_key}`
 };
 
-class Map extends React.Component {
+class Map extends React.PureComponent {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      initialRegion: null
+      isInitialized: false
     };
-  }
-
-  shouldComponentUpdate(props) {
-    const { initialRegion } = this.state;
-    const { position } = props;
-    if (!initialRegion && position) {
-      const { latitude, longitude } = position.coords;
-      this.setState({
-        initialRegion: {
-          latitude,
-          longitude,
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA
-        }
-      });
-      return true;
-    }
-    return false;
+    this.map = null;
   }
 
   handleMapLongPress = e => {
     console.log('long press', e);
   };
 
-  render() {
-    const { initialRegion } = this.state;
-    const { followUser, marker } = this.props;
+  componentDidUpdate() {
+    if (
+      // this.state.isInitialized &&
+      this.props.position &&
+      this.props.followPosition &&
+      this.map
+    ) {
+      this.map.animateToCoordinate({
+        latitude: this.props.position.coords.latitude,
+        longitude: this.props.position.coords.longitude
+      });
+    }
+  }
 
-    if (!initialRegion) {
+  render() {
+    if (!this.props.position) {
       return null;
     }
+
+    const region = {
+      latitude: this.props.position.coords.latitude,
+      longitude: this.props.position.coords.longitude,
+      latitudeDelta: LATITUDE_DELTA,
+      longitudeDelta: LONGITUDE_DELTA
+    };
+
+    const { marker } = this.props;
     return (
       <MapView
+        ref={el => (this.map = el)}
         style={styles.map}
         mapType={MAP_TYPES.NONE}
-        initialRegion={initialRegion}
+        initialRegion={region}
         showsUserLocation
-        followsUserLocation={followUser}
         onLongPress={this.handleMapLongPress}
       >
         <UrlTile urlTemplate={TILE_URLS.ocm} zIndex={-1} />

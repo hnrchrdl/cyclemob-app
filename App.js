@@ -1,27 +1,21 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Button,
-  Dimensions,
-  Platform,
-  Text
-} from 'react-native';
+import { StyleSheet, View, Dimensions, Platform, Text } from 'react-native';
 
 import Map from './components/Map';
-import Navbar from './components/Navbar';
 import Search from './components/Search';
+import Bikecomputer from './components/Bikecomputer';
+import Toolbar from './components/Toolbar';
 import { Constants } from 'expo';
 
 const { width } = Dimensions.get('window');
-const TOOLBAR_HEIGHT = 56;
 
 export default class App extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      followUser: true,
+      followUserLocation: true,
       showSearch: false,
+      showBikecomputer: false,
       marker: [],
       position: null
     };
@@ -46,15 +40,27 @@ export default class App extends React.Component {
     );
   }
 
-  toggleFollowUser = () => {
+  toggleFollowUserLocation = () => {
     this.setState(state => ({
-      followUser: !state.followUser
+      followUserLocation: !state.followUserLocation
     }));
   };
 
-  handleSearchAction = () => {
+  toggleShowSearch = () => {
     this.setState(state => ({
       showSearch: !state.showSearch
+    }));
+  };
+
+  hideSearch = () => {
+    this.setState(state => ({
+      showSearch: false
+    }));
+  };
+
+  toggleShowBikecomputer = () => {
+    this.setState(state => ({
+      showBikecomputer: !state.showBikecomputer
     }));
   };
 
@@ -78,32 +84,46 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { position, followUser, showSearch } = this.state;
+    const {
+      position,
+      followUserLocation,
+      showSearch,
+      showBikecomputer
+    } = this.state;
     return (
-      <View style={styles.containerApp}>
-        <Navbar handleSearchAction={this.handleSearchAction} />
-        <View style={styles.containerMap}>
-          <Map
-            followUser={followUser}
-            marker={this.state.marker}
-            position={position}
-          />
-          {showSearch && <Search onItemSelect={this.onLocationSelected} />}
-          <View style={styles.containerMoveInfo}>
-            {position && <Text>{position.coords.speed} km/h</Text>}
-          </View>
-          <View style={styles.btnFollowUserToggleContainer}>
-            <Button
-              style={styles.btnFollowUserToggle}
-              color={followUser ? 'tomato' : 'cadetblue'}
-              title={
-                followUser
-                  ? "stop following user's position"
-                  : "follow user's position on map"
-              }
-              onPress={this.toggleFollowUser}
+      <View style={styles.containerMap}>
+        <Map
+          followPosition={followUserLocation}
+          marker={this.state.marker}
+          position={position}
+        />
+        <View style={styles.containerOnMapTop}>
+          {position && (
+            <Text style={{ color: 'tomato' }}>
+              {position.coords.latitude} | {position.coords.longitude}
+            </Text>
+          )}
+          {showSearch && (
+            <Search
+              onItemSelect={this.onLocationSelected}
+              onClose={this.hideSearch}
             />
-          </View>
+          )}
+        </View>
+        <View style={styles.containerOnMapBottom}>
+          {showBikecomputer && (
+            <Bikecomputer
+              speed={position.coords.speed}
+              altitude={position.coords.altitude}
+            />
+          )}
+          <Toolbar
+            onToggleShowSearch={this.toggleShowSearch}
+            onToggleUserLocation={this.toggleFollowUserLocation}
+            followUserLocation={followUserLocation}
+            onToggleShowBikecomputer={this.toggleShowBikecomputer}
+            onToggleShowMenu={this.onToggleShowMenu}
+          />
         </View>
       </View>
     );
@@ -111,18 +131,25 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  containerApp: {
-    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
-    flex: 1
-  },
   containerMap: {
     position: 'absolute',
-    top: TOOLBAR_HEIGHT,
+    top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
-    justifyContent: 'flex-end',
-    alignItems: 'center'
+    bottom: 0
+  },
+  containerOnMapBottom: {
+    position: 'absolute',
+    // top: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
+    left: 0,
+    right: 0,
+    bottom: 0
+  },
+  containerOnMapTop: {
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
+    left: 0,
+    right: 0
   },
   btnFollowUserToggleContainer: {
     position: 'absolute',
