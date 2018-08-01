@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
   toolbarItem: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'transparent'
   }
 });
 export default Toolbar;
