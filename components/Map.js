@@ -6,8 +6,7 @@ import { thunderforest_api_key } from '../env';
 const { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
 const TILE_URLS = {
   ocm: `https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforest_api_key}`
 };
@@ -32,10 +31,13 @@ class Map extends React.PureComponent {
       this.props.followPosition &&
       this.map
     ) {
-      this.map.animateToCoordinate({
-        latitude: this.props.position.coords.latitude,
-        longitude: this.props.position.coords.longitude
-      });
+      const latitude = this.props.position.coords.latitude;
+      const longitude = this.props.position.coords.longitude;
+      const coord = {
+        latitude,
+        longitude
+      };
+      this.map.animateToCoordinate(coord);
     }
   }
 
@@ -44,14 +46,18 @@ class Map extends React.PureComponent {
       return null;
     }
 
+    const { marker } = this.props;
+    const latitude = this.props.position.coords.latitude;
+    const longitude = this.props.position.coords.longitude;
+    const latitudeDelta = 0.02;
+    const longitudeDelta = latitudeDelta * ASPECT_RATIO;
     const region = {
-      latitude: this.props.position.coords.latitude,
-      longitude: this.props.position.coords.longitude,
-      latitudeDelta: LATITUDE_DELTA,
-      longitudeDelta: LONGITUDE_DELTA
+      latitude,
+      longitude,
+      latitudeDelta,
+      longitudeDelta
     };
 
-    const { marker } = this.props;
     return (
       <MapView
         ref={el => (this.map = el)}

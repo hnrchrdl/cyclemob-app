@@ -1,13 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions, Platform, Text } from 'react-native';
+import { StyleSheet, View, Platform, Text, Slider } from 'react-native';
 
+import Button from './components/Button';
 import Map from './components/Map';
 import Search from './components/Search';
 import Bikecomputer from './components/Bikecomputer';
 import Toolbar from './components/Toolbar';
 import { Constants } from 'expo';
-
-const { width } = Dimensions.get('window');
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -17,16 +16,32 @@ export default class App extends React.Component {
       showSearch: false,
       showBikecomputer: false,
       marker: [],
-      position: null
+      position: null,
+      isRecording: false
     };
   }
 
   componentDidMount() {
     navigator.geolocation.watchPosition(
       position => {
-        this.setState({
-          position
-        });
+        this.setState(state => ({
+          position,
+          marker: state.isRecording
+            ? [
+                ...state.marker,
+                {
+                  id: (state.marker.length + 1).toString(),
+                  place_id: (state.marker.length + 1).toString(),
+                  title: '',
+                  description: '',
+                  coordinate: {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude
+                  }
+                }
+              ]
+            : state.marker
+        }));
       },
       err => {
         console.error(err);
@@ -83,6 +98,18 @@ export default class App extends React.Component {
     }));
   };
 
+  startRecording = () => {
+    this.setState({
+      isRecording: true
+    });
+  };
+
+  stopRecording = () => {
+    this.setState({
+      isRecording: false
+    });
+  };
+
   render() {
     const {
       position,
@@ -96,6 +123,7 @@ export default class App extends React.Component {
           followPosition={followUserLocation}
           marker={this.state.marker}
           position={position}
+          zoomFactor={this.state.mapZoomFactor}
         />
         <View style={styles.containerOnMapTop}>
           {position && (
@@ -111,6 +139,19 @@ export default class App extends React.Component {
           )}
         </View>
         <View style={styles.containerOnMapBottom}>
+          <View style={styles.containerButtonsContainer}>
+            <View style={styles.containerButtons}>
+              {this.state.isRecording ? (
+                <Button iconName="stop" onPress={this.stopRecording} />
+              ) : (
+                <Button
+                  iconName="fiber-manual-record"
+                  color="tomato"
+                  onPress={this.startRecording}
+                />
+              )}
+            </View>
+          </View>
           {showBikecomputer && (
             <Bikecomputer
               speed={position.coords.speed}
@@ -151,19 +192,17 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0
   },
-  btnFollowUserToggleContainer: {
-    position: 'absolute',
-    bottom: 0,
+  containerButtonsContainer: {
     flex: 1,
-    width: width
+    margin: 5,
+    marginBottom: 40,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end'
   },
-  containerMoveInfo: {
-    position: 'absolute',
-    bottom: 50,
+  containerButtonLeft: {
     flex: 1,
-    width: width,
-    padding: 10,
-    backgroundColor: '#fff'
-  },
-  btnFollowUserToggle: {}
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  }
 });

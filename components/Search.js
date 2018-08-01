@@ -63,7 +63,7 @@ class Search extends React.PureComponent {
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <View style={{ flex: 0 }}>
+          <View style={{ flex: 0, marginTop: 10, marginRight: -15 }}>
             <MaterialIcons name="search" size={20} />
           </View>
           <View style={{ flex: 1 }}>
@@ -103,25 +103,25 @@ class Search extends React.PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 10,
     backgroundColor: '#fff',
     opacity: 0.95
   },
   inputContainer: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingLeft: 10
+  },
+  textInput: {
+    height: 40,
+    marginLeft: -10,
+    paddingLeft: 30,
+    marginRight: 10
   },
   resultContainer: {
     borderTopColor: '#eee',
     borderTopWidth: 1,
-    marginTop: 20
-  },
-  textInput: {
-    height: 40,
-    paddingBottom: 20,
-    marginLeft: -20,
-    paddingLeft: 30,
-    marginRight: 10
+    margin: 10
   },
   resultItem: {
     marginTop: 10,
