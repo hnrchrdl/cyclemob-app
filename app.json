@@ -1,7 +1,21 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0",
     "name": "Cyclemob",
+    "description": "Bikecomputer based on OpenCycleMap",
+    "slug": "cyclemob",
+    "version": "0.0.1",
+    "sdkVersion": "27.0.0",
     "icon": "./app-icon.png",
+    "primaryColor": "#000000",
+    "splash": {
+     "backgroundColor": "#ffffff",
+      "image": "./app-icon.png"
+    },
+    "ios": {
+      "bundleIdentifier": "hnrchrdl.cyclemob"
+    },
+    "android": {
+      "package": "hnrchrdl.cyclemob"
+    }
   }
 }
