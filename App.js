@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Platform, Text, Slider } from 'react-native';
+import { StyleSheet, View, Platform, Text } from 'react-native';
 
 import Button from './components/Button';
 import Map from './components/Map';
@@ -7,6 +7,18 @@ import Search from './components/Search';
 import Bikecomputer from './components/Bikecomputer';
 import Toolbar from './components/Toolbar';
 import { Constants } from 'expo';
+import { getDistance } from './lib/lib'
+
+const GEOLOCATION_OPTIONS = {
+  enableHighAccuracy: true,
+  timeout: 10000,
+  maximumAge: 36000,
+  distanceFilter: 1
+}
+
+const ERROR_HANDLER_FACTORY = errName => err => {
+  console.error(errName , err)
+}
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -17,7 +29,12 @@ export default class App extends React.Component {
       showBikecomputer: false,
       marker: [],
       position: null,
-      isRecording: false
+      isRecording: false,
+      etappeDistance: 0,
+      etappeAvgSpeed: 0,
+      etappeTopSpeed: 0,
+      etappeTime: 0,
+      etappeMoveTime: 0,
     };
   }
 
@@ -26,6 +43,9 @@ export default class App extends React.Component {
       position => {
         this.setState(state => ({
           position,
+          etappeDistance: state.isRecording && state.position
+            ? state.etappeDistance + getDistance(state.position.coords, position.coords)
+            : state.etappeDistance,
           marker: state.isRecording
             ? [
                 ...state.marker,
@@ -43,15 +63,8 @@ export default class App extends React.Component {
             : state.marker
         }));
       },
-      err => {
-        console.error(err);
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 36000,
-        distanceFilter: 1
-      }
+      ERROR_HANDLER_FACTORY('Geolocation error'),
+      GEOLOCATION_OPTIONS
     );
   }
 
@@ -115,15 +128,21 @@ export default class App extends React.Component {
       position,
       followUserLocation,
       showSearch,
-      showBikecomputer
+      showBikecomputer,
+      marker,
+      isRecording,
+      etappeDistance,
+      etappeAvgSpeed,
+      etappeTopSpeed,
+      etappeTime,
+      etappeMoveTime
     } = this.state;
     return (
       <View style={styles.containerMap}>
         <Map
           followPosition={followUserLocation}
-          marker={this.state.marker}
+          marker={marker}
           position={position}
-          zoomFactor={this.state.mapZoomFactor}
         />
         <View style={styles.containerOnMapTop}>
           {position && (
@@ -140,22 +159,25 @@ export default class App extends React.Component {
         </View>
         <View style={styles.containerOnMapBottom}>
           <View style={styles.containerButtonsContainer}>
-            <View style={styles.containerButtons}>
-              {this.state.isRecording ? (
-                <Button iconName="stop" onPress={this.stopRecording} />
-              ) : (
-                <Button
-                  iconName="fiber-manual-record"
-                  color="tomato"
-                  onPress={this.startRecording}
-                />
-              )}
-            </View>
+            {isRecording ? (
+              <Button iconName="stop" onPress={this.stopRecording} />
+            ) : (
+              <Button
+                iconName="fiber-manual-record"
+                color="tomato"
+                onPress={this.startRecording}
+              />
+            )}
           </View>
           {showBikecomputer && (
             <Bikecomputer
               speed={position.coords.speed}
               altitude={position.coords.altitude}
+              distance={etappeDistance}
+              avgSpeed={etappeAvgSpeed}
+              topSpeed={etappeTopSpeed}
+              time={etappeTime}
+              moveTime={etappeMoveTime}
             />
           )}
           <Toolbar
@@ -198,11 +220,6 @@ const styles = StyleSheet.create({
     marginBottom: 40,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end'
-  },
-  containerButtonLeft: {
-    flex: 1,
-    flexDirection: 'row',
     alignItems: 'flex-end'
   }
 });
