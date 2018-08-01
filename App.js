@@ -7,18 +7,8 @@ import Search from './components/Search';
 import Bikecomputer from './components/Bikecomputer';
 import Toolbar from './components/Toolbar';
 import { Constants } from 'expo';
-import { getDistance } from './lib/lib'
-
-const GEOLOCATION_OPTIONS = {
-  enableHighAccuracy: true,
-  timeout: 10000,
-  maximumAge: 36000,
-  distanceFilter: 1
-}
-
-const ERROR_HANDLER_FACTORY = errName => err => {
-  console.error(errName , err)
-}
+import { getDistance, createMarker } from './lib/helper'
+import { watchPosition } from './lib/geolocation'
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -39,33 +29,24 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    navigator.geolocation.watchPosition(
-      position => {
-        this.setState(state => ({
-          position,
-          etappeDistance: state.isRecording && state.position
-            ? state.etappeDistance + getDistance(state.position.coords, position.coords)
-            : state.etappeDistance,
-          marker: state.isRecording
-            ? [
-                ...state.marker,
-                {
-                  id: (state.marker.length + 1).toString(),
-                  place_id: (state.marker.length + 1).toString(),
-                  title: '',
-                  description: '',
-                  coordinate: {
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude
-                  }
-                }
-              ]
-            : state.marker
-        }));
-      },
-      ERROR_HANDLER_FACTORY('Geolocation error'),
-      GEOLOCATION_OPTIONS
-    );
+    watchPosition(position => {
+      this.setState(state => ({
+        position,
+        etappeDistance: state.isRecording && state.position
+          ? state.etappeDistance + getDistance(state.position.coords, position.coords)
+          : state.etappeDistance,
+        marker: state.isRecording && state.position
+          ? [
+              ...state.marker,
+              createMarker({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              })
+            ]
+          : state.marker
+      }));
+    })
+
   }
 
   toggleFollowUserLocation = () => {
@@ -97,16 +78,13 @@ export default class App extends React.Component {
       showSearch: false,
       marker: [
         ...state.marker,
-        {
+        createMarker({
           id: item.id,
-          place_id: item.place_id,
           title: item.name,
           description: item.vicinity,
-          coordinate: {
-            latitude: item.geometry.location.lat,
-            longitude: item.geometry.location.lng
-          }
-        }
+          lat: item.geometry.location.lat,
+          lng: item.geometry.location.lng
+        })
       ]
     }));
   };
@@ -181,9 +159,9 @@ export default class App extends React.Component {
             />
           )}
           <Toolbar
+            followUserLocation={followUserLocation}
             onToggleShowSearch={this.toggleShowSearch}
             onToggleUserLocation={this.toggleFollowUserLocation}
-            followUserLocation={followUserLocation}
             onToggleShowBikecomputer={this.toggleShowBikecomputer}
             onToggleShowMenu={this.onToggleShowMenu}
           />

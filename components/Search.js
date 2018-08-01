@@ -11,8 +11,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import {
   getPlacesAutocomplete,
   getPlaceDetails,
-  createSessionToken
-} from '../lib/lib';
+} from '../lib/gmaps-api';
+import { createUUID } from '../lib/helper'
 import { debounce } from 'lodash';
 
 class SearchResultItem extends React.Component {
@@ -38,13 +38,13 @@ class Search extends React.PureComponent {
     super();
     this.state = {
       result: [],
-      sessionToken: createSessionToken()
+      sessionToken: createUUID()
     };
   }
   onSearchTextChange = input => {
     if (input.length === 0) {
       this.setState({
-        sessionToken: createSessionToken()
+        sessionToken: createUUID()
       });
     } else {
       getPlacesAutocomplete(input, this.state.sessionToken).then(data => {
