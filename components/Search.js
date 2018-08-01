@@ -13,10 +13,6 @@ import { getPlacesAutocomplete, getPlaceDetails } from '../lib/gmaps-api';
 import { createUUID } from '../lib/helper';
 import { debounce } from 'lodash';
 
-SearchResultItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  onItemSelect: PropTypes.function.isRequired
-};
 class SearchResultItem extends React.Component {
   onPress = () => {
     const { item } = this.props;
@@ -34,11 +30,11 @@ class SearchResultItem extends React.Component {
     );
   }
 }
-
-Search.propTypes = {
-  onItemSelect: PropTypes.function.isRequired,
-  onClose: PropTypes.function.isRequired
+SearchResultItem.propTypes = {
+  item: PropTypes.object.isRequired,
+  onItemSelect: PropTypes.func.isRequired
 };
+
 class Search extends React.PureComponent {
   constructor() {
     super();
@@ -106,6 +102,10 @@ class Search extends React.PureComponent {
     );
   }
 }
+Search.propTypes = {
+  onItemSelect: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   container: {

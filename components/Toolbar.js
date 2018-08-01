@@ -1,41 +1,51 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 
-const Toolbar = () => (
-  <View style={styles.container}>
-    <TouchableOpacity
-      style={styles.toolbarItem}
-      onPress={this.props.onToggleShowSearch}
-    >
-      <MaterialIcons name="search" size={20} />
-    </TouchableOpacity>
-    <TouchableOpacity
-      style={styles.toolbarItem}
-      onPress={this.props.onToggleUserLocation}
-    >
-      <MaterialIcons
-        style={this.props.followUserLocation ? { color: 'tomato' } : {}}
-        name="center-focus-strong"
-        size={20}
-      />
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.toolbarItem}>
-      <MaterialIcons
-        name="info-outline"
-        size={20}
-        onPress={this.props.onToggleShowBikecomputer}
-      />
-    </TouchableOpacity>
+Toolbar.propTypes = {
+  onToggleShowSearch: PropTypes.func.isRequired,
+  onToggleUserLocation: PropTypes.func.isRequired,
+  onToggleShowBikecomputer: PropTypes.func.isRequired,
+  onToggleShowMenu: PropTypes.func.isRequired,
+  followUserLocation: PropTypes.bool.isRequired
+};
+function Toolbar({
+  onToggleShowSearch,
+  onToggleUserLocation,
+  followUserLocation,
+  onToggleShowBikecomputer,
+  onToggleShowMenu
+}) {
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.toolbarItem} onPress={onToggleShowSearch}>
+        <MaterialIcons name="search" size={20} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.toolbarItem}
+        onPress={onToggleUserLocation}
+      >
+        <MaterialIcons
+          style={followUserLocation ? { color: 'tomato' } : {}}
+          name="center-focus-strong"
+          size={20}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.toolbarItem}>
+        <MaterialIcons
+          name="info-outline"
+          size={20}
+          onPress={onToggleShowBikecomputer}
+        />
+      </TouchableOpacity>
 
-    <TouchableOpacity
-      style={styles.toolbarItem}
-      onPress={this.props.onToggleShowMenu}
-    >
-      <MaterialIcons name="menu" size={20} />
-    </TouchableOpacity>
-  </View>
-);
+      <TouchableOpacity style={styles.toolbarItem} onPress={onToggleShowMenu}>
+        <MaterialIcons name="menu" size={20} />
+      </TouchableOpacity>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {

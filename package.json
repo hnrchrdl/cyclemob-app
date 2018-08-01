@@ -6,6 +6,7 @@
     "babel-eslint": "^8.2.6",
     "eslint": "^5.2.0",
     "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-jest": "^21.18.0",
     "jest-expo": "~27.0.0",
     "prettier-eslint": "^8.8.2",
     "react-native-scripts": "1.14.0",
@@ -18,6 +19,11 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      "react"
+    ]
   },
   "jest": {
     "preset": "jest-expo"
