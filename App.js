@@ -7,8 +7,8 @@ import Search from './components/Search';
 import Bikecomputer from './components/Bikecomputer';
 import Toolbar from './components/Toolbar';
 import { Constants } from 'expo';
-import { getDistance, createMarker } from './lib/helper'
-import { watchPosition } from './lib/geolocation'
+import { getDistance, createMarker } from './lib/helper';
+import { watchPosition } from './lib/geolocation';
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -24,7 +24,7 @@ export default class App extends React.Component {
       etappeAvgSpeed: 0,
       etappeTopSpeed: 0,
       etappeTime: 0,
-      etappeMoveTime: 0,
+      etappeMoveTime: 0
     };
   }
 
@@ -32,21 +32,23 @@ export default class App extends React.Component {
     watchPosition(position => {
       this.setState(state => ({
         position,
-        etappeDistance: state.isRecording && state.position
-          ? state.etappeDistance + getDistance(state.position.coords, position.coords)
-          : state.etappeDistance,
-        marker: state.isRecording && state.position
-          ? [
+        etappeDistance:
+          state.isRecording && state.position
+            ? state.etappeDistance +
+              getDistance(state.position.coords, position.coords)
+            : state.etappeDistance,
+        marker:
+          state.isRecording && state.position
+            ? [
               ...state.marker,
               createMarker({
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
               })
             ]
-          : state.marker
+            : state.marker
       }));
-    })
-
+    });
   }
 
   toggleFollowUserLocation = () => {
@@ -62,9 +64,9 @@ export default class App extends React.Component {
   };
 
   hideSearch = () => {
-    this.setState(state => ({
+    this.setState({
       showSearch: false
-    }));
+    });
   };
 
   toggleShowBikecomputer = () => {

@@ -1,16 +1,20 @@
 import React from 'react';
 import { Dimensions, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import MapView, { MAP_TYPES, UrlTile, Marker } from 'react-native-maps';
 import { thunderforest_api_key } from '../env';
 
 const { width, height } = Dimensions.get('window');
-
 const ASPECT_RATIO = width / height;
-
 const TILE_URLS = {
   ocm: `https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforest_api_key}`
 };
 
+Map.propTypes = {
+  position: PropTypes.object.isRequired,
+  followPosition: PropTypes.boolean.isRequired,
+  marker: PropTypes.array.isRequired
+};
 class Map extends React.PureComponent {
   constructor(props, context) {
     super(props, context);

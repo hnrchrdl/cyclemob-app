@@ -1,7 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 
+Button.propTypes = {
+  onPress: PropTypes.function.isRequired,
+  iconName: PropTypes.string.isRequired,
+  color: PropTypes.string
+};
 class Button extends React.PureComponent {
   render() {
     return (
