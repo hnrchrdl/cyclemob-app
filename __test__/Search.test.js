@@ -1,7 +1,7 @@
 import React from 'react';
 import Search from '../components/Search';
 
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 jest.mock('TextInput', () => {
   const actualComponent = require.requireActual('TextInput');
@@ -22,6 +22,10 @@ const props = {
 };
 
 it('renders without crashing', () => {
-  const rendered = renderer.create(<Search {...props} />).toJSON();
-  expect(rendered).toBeTruthy();
+  const tree = shallow(<Search {...props} />);
+  expect(tree).toBeTruthy();
+});
+it('matches snapshot', () => {
+  const tree = shallow(<Search {...props} />);
+  expect(tree).toMatchSnapshot();
 });

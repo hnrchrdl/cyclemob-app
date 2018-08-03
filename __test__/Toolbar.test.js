@@ -1,7 +1,7 @@
 import React from 'react';
 import Toolbar from '../components/Toolbar';
 
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 const props = {
   onToggleShowSearch: () => {},
@@ -11,6 +11,10 @@ const props = {
   followUserLocation: false
 };
 it('renders without crashing', () => {
-  const rendered = renderer.create(<Toolbar {...props} />).toJSON();
-  expect(rendered).toBeTruthy();
+  const tree = shallow(<Toolbar {...props} />);
+  expect(tree).toBeTruthy();
+});
+it('matches snapshot', () => {
+  const tree = shallow(<Toolbar {...props} />);
+  expect(tree).toMatchSnapshot();
 });

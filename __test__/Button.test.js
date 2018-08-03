@@ -1,13 +1,22 @@
 import React from 'react';
 import Button from '../components/Button';
 
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 const props = {
-  onPress: () => {},
+  onPress: jest.fn(),
   iconName: 'search'
 };
 it('renders without crashing', () => {
-  const rendered = renderer.create(<Button {...props} />).toJSON();
-  expect(rendered).toBeTruthy();
+  const tree = shallow(<Button {...props} />);
+  expect(tree).toBeTruthy();
+});
+it('matches snapshot', () => {
+  const tree = shallow(<Button {...props} />);
+  expect(tree).toMatchSnapshot();
+});
+it('handles callback on press', () => {
+  const tree = shallow(<Button {...props} />);
+  tree.simulate('press');
+  expect(props.onPress).toBeCalled();
 });

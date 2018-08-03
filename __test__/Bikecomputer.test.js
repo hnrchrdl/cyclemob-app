@@ -1,11 +1,26 @@
 import React from 'react';
 import Bikecomputer from '../components/Bikecomputer';
 
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
-const props = {};
+let props = {};
 
 it('renders without crashing', () => {
-  const rendered = renderer.create(<Bikecomputer {...props} />).toJSON();
-  expect(rendered).toBeTruthy();
+  const tree = shallow(<Bikecomputer {...props} />);
+  expect(tree).toBeTruthy();
+});
+
+it('matches snapshots', () => {
+  const tree = shallow(<Bikecomputer {...props} />);
+  expect(tree).toMatchSnapshot();
+});
+
+props = {
+  speed: 10,
+  altitude: 10
+};
+
+it('matches snapshot with new props', () => {
+  const tree = shallow(<Bikecomputer {...props} />);
+  expect(tree).toMatchSnapshot();
 });
