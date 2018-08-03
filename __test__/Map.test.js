@@ -1,7 +1,7 @@
 import React from 'react';
 import Map from '../components/Map';
 
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 jest.mock('react-native-maps', () => {
   const React = require.requireActual('react');
@@ -42,17 +42,22 @@ jest.mock('react-native-maps', () => {
   return MockMapView;
 });
 
+const props = {
+  position: {
+    coords: {
+      latitude: 50,
+      longitude: 50
+    }
+  },
+  followPosition: true,
+  marker: []
+};
+
 it('renders without crashing', () => {
-  const props = {
-    position: {
-      coords: {
-        latitude: 50,
-        longitude: 50
-      }
-    },
-    followPosition: true,
-    marker: []
-  };
-  const rendered = renderer.create(<Map {...props} />).toJSON();
-  expect(rendered).toBeTruthy();
+  const tree = shallow(<Map {...props} />);
+  expect(tree).toBeTruthy();
+});
+it('matches snapshot', () => {
+  const tree = shallow(<Map {...props} />);
+  expect(tree).toMatchSnapshot();
 });

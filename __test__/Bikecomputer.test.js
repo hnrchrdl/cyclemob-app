@@ -1,11 +1,15 @@
 import React from 'react';
 import Bikecomputer from '../components/Bikecomputer';
 
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 const props = {};
 
 it('renders without crashing', () => {
-  const rendered = renderer.create(<Bikecomputer {...props} />).toJSON();
-  expect(rendered).toBeTruthy();
+  const tree = shallow(<Bikecomputer {...props} />);
+  expect(tree).toBeTruthy();
+});
+it('matches snapshot', () => {
+  const tree = shallow(<Bikecomputer {...props} />);
+  expect(tree).toMatchSnapshot();
 });
