@@ -103,6 +103,10 @@ export default class App extends React.Component {
     });
   };
 
+  onToggleShowMenu = e => {
+    console.log(e);
+  };
+
   render() {
     const {
       position,

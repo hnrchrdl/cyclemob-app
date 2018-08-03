@@ -63,7 +63,7 @@ class Map extends React.PureComponent {
         style={styles.map}
         mapType={MAP_TYPES.NONE}
         initialRegion={region}
-        showsUserLocation
+        showsUserLocation={true}
         onLongPress={this.handleMapLongPress}
       >
         <UrlTile urlTemplate={TILE_URLS.ocm} zIndex={-1} />
@@ -79,7 +79,7 @@ class Map extends React.PureComponent {
   }
 }
 Map.propTypes = {
-  position: PropTypes.object.isRequired,
+  position: PropTypes.object,
   followPosition: PropTypes.bool.isRequired,
   marker: PropTypes.array.isRequired
 };

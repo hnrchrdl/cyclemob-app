@@ -70,7 +70,7 @@ class Search extends React.PureComponent {
           </View>
           <View style={{ flex: 1 }}>
             <TextInput
-              autoFocus
+              // autoFocus
               style={styles.textInput}
               placeholder="City / POI"
               onChangeText={debounce(this.onSearchTextChange, 800)}

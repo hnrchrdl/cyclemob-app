@@ -7,7 +7,7 @@ Bikecomputer.propTypes = {
   distance: PropTypes.number,
   time: PropTypes.number,
   moveTime: PropTypes.number,
-  avgSpeed: PropTypes.Number,
+  avgSpeed: PropTypes.number,
   topSpeed: PropTypes.number,
   altitude: PropTypes.number
 };
