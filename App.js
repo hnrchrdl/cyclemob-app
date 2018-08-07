@@ -1,30 +1,29 @@
 import React from 'react';
 import { StyleSheet, View, Platform, Text } from 'react-native';
 
-import Button from './components/Button';
 import Map from './components/Map';
 import Search from './components/Search';
 import Bikecomputer from './components/Bikecomputer';
 import Toolbar from './components/Toolbar';
+import MarkerDetails from './components/MarkerDetails';
 import { Constants } from 'expo';
 import { getDistance, createMarker } from './lib/helper';
 import { watchPosition } from './lib/geolocation';
+import { getRoute } from './lib/gmaps-api';
 
 export default class App extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      followUserLocation: true,
-      showSearch: false,
-      showBikecomputer: false,
-      marker: [],
-      position: null,
-      isRecording: false,
-      etappeDistance: 0,
-      etappeAvgSpeed: 0,
-      etappeTopSpeed: 0,
-      etappeTime: 0,
-      etappeMoveTime: 0
+      followUserLocation: true, // bool
+      showSearch: false, // bool
+      showBikecomputer: false, // bool
+      marker: [], // coordinate: { latitude, longitude }, description, id, pinColor, title
+      markerDetails: null, // coordinate: { latitude, longitude }, description, id, pinColor, title
+      position: null, // coords: { latitude, longitude, speed, accuracy, altitude, heading }, mocked, timestamp
+      target: null, // coordinate: { latitude, longitude }, description, id, pinColor, title
+      waypoints: null, // [coordinate: { latitude, longitude }, description, id, pinColor, title]
+      targetRoute: null //
     };
   }
 
@@ -76,35 +75,61 @@ export default class App extends React.Component {
   };
 
   onLocationSelected = item => {
+    const marker = createMarker({
+      id: item.id,
+      title: item.name,
+      description: item.vicinity,
+      lat: item.geometry.location.lat,
+      lng: item.geometry.location.lng
+    });
     this.setState(state => ({
       showSearch: false,
-      marker: [
-        ...state.marker,
-        createMarker({
-          id: item.id,
-          title: item.name,
-          description: item.vicinity,
-          lat: item.geometry.location.lat,
-          lng: item.geometry.location.lng
-        })
-      ]
+      marker: [...state.marker, marker],
+      markerDetails: marker
     }));
   };
 
-  startRecording = () => {
+  onToggleShowMenu = () => {
+    console.log('show Menu');
+  };
+
+  onMarkerPressed = markerDetails => {
     this.setState({
-      isRecording: true
+      markerDetails
     });
   };
 
-  stopRecording = () => {
-    this.setState({
-      isRecording: false
+  setTarget = marker => {
+    const origin = {
+      latitude: marker.coordinate.latitude,
+      longitude: marker.coordinate.longitude
+    };
+    const destination = {
+      latitude: this.state.position.coords.latitude,
+      longitude: this.state.position.coords.longitude
+    };
+    getRoute(origin, destination).then(result => {
+      this.setState({
+        targetRoute: result.map(x => ({ latitude: x.lat, longitude: x.lng }))
+      });
     });
   };
 
-  onToggleShowMenu = e => {
-    console.log(e);
+  setWaypoint = marker => {
+    console.log(marker);
+  };
+
+  dismissMarkerDetails = () => {
+    this.setState({
+      markerDetails: null
+    });
+  };
+
+  removeMarker = marker => {
+    this.setState(state => ({
+      marker: state.marker.filter(_marker => _marker.id !== marker.id),
+      markerDetails: null
+    }));
   };
 
   render() {
@@ -114,19 +139,17 @@ export default class App extends React.Component {
       showSearch,
       showBikecomputer,
       marker,
-      isRecording,
-      etappeDistance,
-      etappeAvgSpeed,
-      etappeTopSpeed,
-      etappeTime,
-      etappeMoveTime
+      markerDetails,
+      targetRoute
     } = this.state;
-    return (
+    return position ? (
       <View style={styles.containerMap}>
         <Map
           followPosition={followUserLocation}
           marker={marker}
+          onMarkerPressed={this.onMarkerPressed}
           position={position}
+          route={targetRoute}
         />
         <View style={styles.containerOnMapTop}>
           {position && (
@@ -138,30 +161,24 @@ export default class App extends React.Component {
             <Search
               onItemSelect={this.onLocationSelected}
               onClose={this.hideSearch}
+              position={position}
             />
           )}
         </View>
         <View style={styles.containerOnMapBottom}>
-          <View style={styles.containerButtonsContainer}>
-            {isRecording ? (
-              <Button iconName="stop" onPress={this.stopRecording} />
-            ) : (
-              <Button
-                iconName="fiber-manual-record"
-                color="tomato"
-                onPress={this.startRecording}
-              />
-            )}
-          </View>
+          {markerDetails && (
+            <MarkerDetails
+              marker={markerDetails}
+              onClose={this.dismissMarkerDetails}
+              onSetAsTarget={this.setTarget}
+              onSetAsWaypoint={this.setWaypoint}
+              onRemove={this.removeMarker}
+            />
+          )}
           {showBikecomputer && (
             <Bikecomputer
               speed={position.coords.speed}
               altitude={position.coords.altitude}
-              distance={etappeDistance}
-              avgSpeed={etappeAvgSpeed}
-              topSpeed={etappeTopSpeed}
-              time={etappeTime}
-              moveTime={etappeMoveTime}
             />
           )}
           <Toolbar
@@ -173,7 +190,7 @@ export default class App extends React.Component {
           />
         </View>
       </View>
-    );
+    ) : null;
   }
 }
 
