@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import Button from './Button';
 import PropTypes from 'prop-types';
 import { MaterialIcons } from '@expo/vector-icons';
 import { getPlacesAutocomplete, getPlaceDetails } from '../lib/gmaps-api';
@@ -49,9 +50,12 @@ class Search extends React.PureComponent {
         sessionToken: createUUID()
       });
     } else {
-      getPlacesAutocomplete(input, this.state.sessionToken).then(data => {
-        this.setState({ result: data });
-      });
+      const location = this.props.position.coords;
+      getPlacesAutocomplete(input, location, this.state.sessionToken).then(
+        data => {
+          this.setState({ result: data });
+        }
+      );
     }
   };
 
@@ -65,23 +69,17 @@ class Search extends React.PureComponent {
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <View style={{ flex: 0, marginTop: 10, marginRight: -15 }}>
-            <MaterialIcons name="search" size={20} />
-          </View>
           <View style={{ flex: 1 }}>
             <TextInput
-              // autoFocus
+              autoFocus
               style={styles.textInput}
               placeholder="City / POI"
               onChangeText={debounce(this.onSearchTextChange, 800)}
             />
           </View>
-          <TouchableOpacity
-            style={{ flex: 0, padding: 10 }}
-            onPress={this.props.onClose}
-          >
-            <Text>Close</Text>
-          </TouchableOpacity>
+          <View style={{ flex: 0 }}>
+            <Button iconName="close" onPress={this.props.onClose} />
+          </View>
         </View>
         {this.state.result.length > 0 && (
           <View style={styles.resultContainer}>
@@ -104,7 +102,8 @@ class Search extends React.PureComponent {
 }
 Search.propTypes = {
   onItemSelect: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  position: PropTypes.object.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -114,14 +113,11 @@ const styles = StyleSheet.create({
     opacity: 0.95
   },
   inputContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    paddingLeft: 10
+    flexDirection: 'row'
   },
   textInput: {
-    height: 40,
-    marginLeft: -10,
-    paddingLeft: 30,
+    paddingTop: 10,
+    paddingBottom: 10,
     marginRight: 10
   },
   resultContainer: {

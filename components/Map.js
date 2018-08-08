@@ -1,8 +1,14 @@
 import React from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import MapView, { MAP_TYPES, UrlTile, Marker } from 'react-native-maps';
+import MapView, {
+  MAP_TYPES,
+  UrlTile,
+  Marker,
+  Polyline
+} from 'react-native-maps';
 import { thunderforest_api_key } from '../env';
+import { RangeObservable } from 'rxjs/observable/RangeObservable';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -18,10 +24,6 @@ class Map extends React.PureComponent {
     };
     this.map = null;
   }
-
-  handleMapLongPress = e => {
-    console.log('long press', e);
-  };
 
   componentDidUpdate() {
     if (
@@ -40,12 +42,20 @@ class Map extends React.PureComponent {
     }
   }
 
+  onMapLongPress = e => {
+    console.log('long press', e);
+  };
+
+  onMarkerPressed = e => {
+    this.props.onMarkerPressed(e);
+  };
+
   render() {
     if (!this.props.position) {
       return null;
     }
 
-    const { marker } = this.props;
+    const { marker, route } = this.props;
     const latitude = this.props.position.coords.latitude;
     const longitude = this.props.position.coords.longitude;
     const latitudeDelta = 0.02;
@@ -57,6 +67,8 @@ class Map extends React.PureComponent {
       longitudeDelta
     };
 
+    console.log(route);
+
     return (
       <MapView
         ref={el => (this.map = el)}
@@ -64,16 +76,25 @@ class Map extends React.PureComponent {
         mapType={MAP_TYPES.NONE}
         initialRegion={region}
         showsUserLocation={true}
-        onLongPress={this.handleMapLongPress}
+        onLongPress={this.onMapLongPress}
       >
         <UrlTile urlTemplate={TILE_URLS.ocm} zIndex={-1} />
         {marker.map(_marker => (
           <Marker
             key={_marker.id}
             coordinate={_marker.coordinate}
-            title={_marker.title}
+            onPress={() => {
+              this.onMarkerPressed(_marker);
+            }}
           />
         ))}
+        {route && (
+          <Polyline
+            coordinates={route}
+            strokeWidth={5}
+            strokeColor={'rgba(255,99,71,0.7)'}
+          />
+        )}
       </MapView>
     );
   }
@@ -81,7 +102,9 @@ class Map extends React.PureComponent {
 Map.propTypes = {
   position: PropTypes.object,
   followPosition: PropTypes.bool.isRequired,
-  marker: PropTypes.array.isRequired
+  marker: PropTypes.array.isRequired,
+  onMarkerPressed: PropTypes.func.isRequired,
+  route: PropTypes.array
 };
 
 const styles = StyleSheet.create({
