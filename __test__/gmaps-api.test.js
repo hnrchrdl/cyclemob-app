@@ -300,9 +300,14 @@ it('should call route service and return correct results', () => {
   expect(thenFn).toHaveBeenCalled();
   expect(thenFn.mock.calls).toHaveLength(1);
   const result = thenFn.mock.calls[0][0];
-  expect(Array.isArray(result)).toBeTruthy();
-  expect(result.length).toBeGreaterThan(0);
-  expect(result[0].latitude).toBeDefined();
-  expect(result[0].longitude).toBeDefined();
+  const route = result.route;
+  expect(Array.isArray(route)).toBeTruthy();
+  expect(route.length).toBeGreaterThan(0);
+  expect(route[0].latitude).toBeDefined();
+  expect(route[0].longitude).toBeDefined();
+  const distance = result.distance;
+  expect(distance).toBe(57824);
+  const duration = result.duration;
+  expect(duration).toBe(3062);
   expect(catchFn).not.toHaveBeenCalled();
 });

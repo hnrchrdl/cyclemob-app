@@ -14,13 +14,6 @@ import { createUUID } from '../lib/helper';
 import { debounce } from 'lodash';
 
 class Search extends React.PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      result: [],
-      sessionToken: createUUID()
-    };
-  }
   static propTypes = {
     position: PropTypes.shape({
       coords: PropTypes.shape({
@@ -38,6 +31,14 @@ class Search extends React.PureComponent {
     onClose: PropTypes.func.isRequired
   };
   static ResultItem = ResultItem;
+
+  constructor() {
+    super();
+    this.state = {
+      result: [],
+      sessionToken: createUUID()
+    };
+  }
 
   onSearchTextChange = input => {
     if (input.length === 0) {
@@ -102,7 +103,9 @@ function ResultItem({ item, onItemSelect }) {
       style={styles.resultItem}
       onPress={() => onItemSelect(item)}
     >
-      <Text style={styles.resultItemName}>{item.structured_formatting}</Text>
+      <Text style={styles.resultItemName}>
+        {item.structured_formatting.main_text}
+      </Text>
       <Text style={styles.resultItemVicinity}>{item.description}</Text>
     </TouchableOpacity>
   );
@@ -110,7 +113,9 @@ function ResultItem({ item, onItemSelect }) {
 
 ResultItem.propTypes = {
   item: PropTypes.shape({
-    structured_formatting: PropTypes.string,
+    structured_formatting: PropTypes.shape({
+      main_text: PropTypes.string
+    }),
     description: PropTypes.string
   }).isRequired,
   onItemSelect: PropTypes.func.isRequired

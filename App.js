@@ -10,6 +10,7 @@ import { Constants } from 'expo';
 import { getDistance, createMarker } from './lib/helper';
 import { watchPosition } from './lib/geolocation';
 import { getRoute } from './lib/gmaps-api';
+import RouteDetails from './components/RouteDetails';
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -23,7 +24,10 @@ export default class App extends React.Component {
       position: null, // coords: { latitude, longitude, speed, accuracy, altitude, heading }, mocked, timestamp
       target: null, // coordinate: { latitude, longitude }, description, id, pinColor, title
       waypoints: null, // [coordinate: { latitude, longitude }, description, id, pinColor, title]
-      targetRoute: null // [{latitude, longitude}]
+      targetRoute: null, // [{latitude, longitude}],
+      targetDistance: 0,
+      targetDuration: 0,
+      showTargetRouteDetails: true
     };
   }
 
@@ -150,16 +154,18 @@ export default class App extends React.Component {
       });
     }
     const origin = {
-      latitude: this.state.target.coordinate.latitude,
-      longitude: this.state.target.coordinate.longitude
-    };
-    const destination = {
       latitude: this.state.position.coords.latitude,
       longitude: this.state.position.coords.longitude
     };
-    getRoute(origin, destination).then(targetRoute => {
+    const destination = {
+      latitude: this.state.target.coordinate.latitude,
+      longitude: this.state.target.coordinate.longitude
+    };
+    getRoute(origin, destination).then(({ route, distance, duration }) => {
       this.setState({
-        targetRoute
+        targetRoute: route,
+        targetDistance: distance,
+        targetDuration: duration
       });
     });
   };
@@ -175,6 +181,18 @@ export default class App extends React.Component {
       marker: state.marker.filter(_marker => _marker.id !== marker.id),
       markerDetails: null
     }));
+  };
+
+  onRouteDetailsClose = () => {
+    this.setState({
+      showTargetRouteDetails: false
+    });
+  };
+
+  removeTargetRoute = () => {
+    this.setState({
+      targetRoute: null
+    });
   };
 
   render() {
@@ -199,7 +217,7 @@ export default class App extends React.Component {
         <View style={styles.containerOnMapTop}>
           {position && (
             <Text style={{ color: 'tomato' }}>
-              {position.coords.latitude} | {position.coords.longitude}
+              {position.coords.latitude} | {position.coords.longitude}|{' '}
             </Text>
           )}
           {showSearch && (
@@ -211,6 +229,14 @@ export default class App extends React.Component {
           )}
         </View>
         <View style={styles.containerOnMapBottom}>
+          {this.state.showTargetRouteDetails && (
+            <RouteDetails
+              distance={this.state.targetDistance}
+              duration={this.state.targetDuration}
+              onClose={this.onRouteDetailsClose}
+              onRemove={() => {}}
+            />
+          )}
           {markerDetails && (
             <MarkerDetails
               marker={markerDetails}
