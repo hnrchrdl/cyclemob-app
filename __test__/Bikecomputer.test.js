@@ -15,7 +15,12 @@ it('matches snapshots', () => {
   expect(tree).toMatchSnapshot();
 });
 
-it('should render data correctly with changed props', () => {
+props = {
+  speed: 10,
+  altitude: 10
+};
+
+it('matches snapshot with new props', () => {
   const tree = shallow(<Bikecomputer {...props} />);
 
   expect(tree.findWhere(item => item.text() === '0 km/h')).toBeTruthy();
