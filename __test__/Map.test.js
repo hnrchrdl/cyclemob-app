@@ -50,7 +50,8 @@ const props = {
     }
   },
   followPosition: true,
-  marker: []
+  marker: [],
+  onMarkerPressed: jest.fn()
 };
 
 it('renders without crashing', () => {

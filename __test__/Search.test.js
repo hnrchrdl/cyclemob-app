@@ -18,7 +18,8 @@ jest.mock('TextInput', () => {
 
 const props = {
   onItemSelect: () => {},
-  onClose: () => {}
+  onClose: () => {},
+  position: { coords: { latitude: 50, longitude: 50 } }
 };
 
 it('renders without crashing', () => {
