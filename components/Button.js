@@ -1,26 +1,21 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
+import { MaterialIcons } from '@expo/vector-icons';
 
-class Button extends React.PureComponent {
-  render() {
-    return (
-      <TouchableOpacity style={styles.container} onPress={this.props.onPress}>
-        <MaterialIcons
-          style={this.props.color ? { color: this.props.color } : {}}
-          name={this.props.iconName}
-          size={20}
-        />
-      </TouchableOpacity>
-    );
-  }
-}
 Button.propTypes = {
   onPress: PropTypes.func.isRequired,
   iconName: PropTypes.string.isRequired,
   color: PropTypes.string
 };
+
+function Button({ iconName, color, onPress }) {
+  return (
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <MaterialIcons style={color ? { color } : {}} name={iconName} size={20} />
+    </TouchableOpacity>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {

@@ -1,492 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot with new props 1`] = `
-ShallowWrapper {
-  "length": 1,
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Bikecomputer
-    altitude={10}
-    speed={10}
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "class",
-    "props": Object {
-      "children": Array [
-        <Component
-          style={
-            Object {
-              "alignItems": "center",
-              "flex": 1,
-              "justifyContent": "center",
-              "padding": 10,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "fontSize": 10,
-              }
-            }
-          >
-            Speed
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={Object {}}
-          >
-            36 km/h
-          </Text>
-        </Component>,
-        <Component
-          style={
-            Object {
-              "alignItems": "center",
-              "flex": 1,
-              "justifyContent": "center",
-              "padding": 10,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "fontSize": 10,
-              }
-            }
-          >
-            Altitude
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={Object {}}
-          >
-            10 m
-          </Text>
-        </Component>,
-      ],
-      "style": Object {
-        "backgroundColor": "rgba(255,255,255,.9)",
-        "borderBottomColor": "#eee",
-        "borderBottomWidth": 1,
-        "flex": 1,
-        "flexDirection": "row",
-        "paddingBottom": 5,
-        "paddingTop": 5,
-      },
-    },
-    "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "fontSize": 10,
-                }
-              }
-            >
-              Speed
-            </Text>,
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={Object {}}
-            >
-              36 km/h
-            </Text>,
-          ],
-          "style": Object {
-            "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-            "padding": 10,
-          },
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "Speed",
-              "ellipsizeMode": "tail",
-              "style": Object {
-                "fontSize": 10,
-              },
-            },
-            "ref": null,
-            "rendered": "Speed",
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "36 km/h",
-              "ellipsizeMode": "tail",
-              "style": Object {},
-            },
-            "ref": null,
-            "rendered": "36 km/h",
-            "type": [Function],
-          },
-        ],
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "fontSize": 10,
-                }
-              }
-            >
-              Altitude
-            </Text>,
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={Object {}}
-            >
-              10 m
-            </Text>,
-          ],
-          "style": Object {
-            "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-            "padding": 10,
-          },
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "Altitude",
-              "ellipsizeMode": "tail",
-              "style": Object {
-                "fontSize": 10,
-              },
-            },
-            "ref": null,
-            "rendered": "Altitude",
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": "10 m",
-              "ellipsizeMode": "tail",
-              "style": Object {},
-            },
-            "ref": null,
-            "rendered": "10 m",
-            "type": [Function],
-          },
-        ],
-        "type": [Function],
-      },
-    ],
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": Array [
-          <Component
-            style={
-              Object {
-                "alignItems": "center",
-                "flex": 1,
-                "justifyContent": "center",
-                "padding": 10,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "fontSize": 10,
-                }
-              }
-            >
-              Speed
-            </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={Object {}}
-            >
-              36 km/h
-            </Text>
-          </Component>,
-          <Component
-            style={
-              Object {
-                "alignItems": "center",
-                "flex": 1,
-                "justifyContent": "center",
-                "padding": 10,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "fontSize": 10,
-                }
-              }
-            >
-              Altitude
-            </Text>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={Object {}}
-            >
-              10 m
-            </Text>
-          </Component>,
-        ],
-        "style": Object {
-          "backgroundColor": "rgba(255,255,255,.9)",
-          "borderBottomColor": "#eee",
-          "borderBottomWidth": 1,
-          "flex": 1,
-          "flexDirection": "row",
-          "paddingBottom": 5,
-          "paddingTop": 5,
-        },
-      },
-      "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "fontSize": 10,
-                  }
-                }
-              >
-                Speed
-              </Text>,
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={Object {}}
-              >
-                36 km/h
-              </Text>,
-            ],
-            "style": Object {
-              "alignItems": "center",
-              "flex": 1,
-              "justifyContent": "center",
-              "padding": 10,
-            },
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": "Speed",
-                "ellipsizeMode": "tail",
-                "style": Object {
-                  "fontSize": 10,
-                },
-              },
-              "ref": null,
-              "rendered": "Speed",
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": "36 km/h",
-                "ellipsizeMode": "tail",
-                "style": Object {},
-              },
-              "ref": null,
-              "rendered": "36 km/h",
-              "type": [Function],
-            },
-          ],
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "fontSize": 10,
-                  }
-                }
-              >
-                Altitude
-              </Text>,
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={Object {}}
-              >
-                10 m
-              </Text>,
-            ],
-            "style": Object {
-              "alignItems": "center",
-              "flex": 1,
-              "justifyContent": "center",
-              "padding": 10,
-            },
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": "Altitude",
-                "ellipsizeMode": "tail",
-                "style": Object {
-                  "fontSize": 10,
-                },
-              },
-              "ref": null,
-              "rendered": "Altitude",
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": "10 m",
-                "ellipsizeMode": "tail",
-                "style": Object {},
-              },
-              "ref": null,
-              "rendered": "10 m",
-              "type": [Function],
-            },
-          ],
-          "type": [Function],
-        },
-      ],
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-      },
-    },
-  },
-}
-`;
-
 exports[`matches snapshots 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Bikecomputer
-    altitude={10}
-    speed={10}
-  />,
+  Symbol(enzyme.__unrendered__): <Bikecomputer />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -516,7 +34,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "fontSize": 10,
+                "fontSize": 12,
               }
             }
           >
@@ -526,9 +44,13 @@ ShallowWrapper {
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
-            style={Object {}}
+            style={
+              Object {
+                "fontSize": 10,
+              }
+            }
           >
-            36 km/h
+            0 km/h
           </Text>
         </Component>,
         <Component
@@ -547,7 +69,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "fontSize": 10,
+                "fontSize": 12,
               }
             }
           >
@@ -557,9 +79,13 @@ ShallowWrapper {
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
-            style={Object {}}
+            style={
+              Object {
+                "fontSize": 10,
+              }
+            }
           >
-            10 m
+            0 m
           </Text>
         </Component>,
       ],
@@ -587,7 +113,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 10,
+                  "fontSize": 12,
                 }
               }
             >
@@ -597,9 +123,13 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-              style={Object {}}
+              style={
+                Object {
+                  "fontSize": 10,
+                }
+              }
             >
-              36 km/h
+              0 km/h
             </Text>,
           ],
           "style": Object {
@@ -621,7 +151,7 @@ ShallowWrapper {
               "children": "Speed",
               "ellipsizeMode": "tail",
               "style": Object {
-                "fontSize": 10,
+                "fontSize": 12,
               },
             },
             "ref": null,
@@ -635,12 +165,14 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "36 km/h",
+              "children": "0 km/h",
               "ellipsizeMode": "tail",
-              "style": Object {},
+              "style": Object {
+                "fontSize": 10,
+              },
             },
             "ref": null,
-            "rendered": "36 km/h",
+            "rendered": "0 km/h",
             "type": [Function],
           },
         ],
@@ -658,7 +190,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 10,
+                  "fontSize": 12,
                 }
               }
             >
@@ -668,9 +200,13 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-              style={Object {}}
+              style={
+                Object {
+                  "fontSize": 10,
+                }
+              }
             >
-              10 m
+              0 m
             </Text>,
           ],
           "style": Object {
@@ -692,7 +228,7 @@ ShallowWrapper {
               "children": "Altitude",
               "ellipsizeMode": "tail",
               "style": Object {
-                "fontSize": 10,
+                "fontSize": 12,
               },
             },
             "ref": null,
@@ -706,12 +242,14 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "10 m",
+              "children": "0 m",
               "ellipsizeMode": "tail",
-              "style": Object {},
+              "style": Object {
+                "fontSize": 10,
+              },
             },
             "ref": null,
-            "rendered": "10 m",
+            "rendered": "0 m",
             "type": [Function],
           },
         ],
@@ -743,7 +281,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 10,
+                  "fontSize": 12,
                 }
               }
             >
@@ -753,9 +291,13 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-              style={Object {}}
+              style={
+                Object {
+                  "fontSize": 10,
+                }
+              }
             >
-              36 km/h
+              0 km/h
             </Text>
           </Component>,
           <Component
@@ -774,7 +316,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 10,
+                  "fontSize": 12,
                 }
               }
             >
@@ -784,9 +326,13 @@ ShallowWrapper {
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
-              style={Object {}}
+              style={
+                Object {
+                  "fontSize": 10,
+                }
+              }
             >
-              10 m
+              0 m
             </Text>
           </Component>,
         ],
@@ -814,7 +360,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "fontSize": 10,
+                    "fontSize": 12,
                   }
                 }
               >
@@ -824,9 +370,13 @@ ShallowWrapper {
                 accessible={true}
                 allowFontScaling={true}
                 ellipsizeMode="tail"
-                style={Object {}}
+                style={
+                  Object {
+                    "fontSize": 10,
+                  }
+                }
               >
-                36 km/h
+                0 km/h
               </Text>,
             ],
             "style": Object {
@@ -848,7 +398,7 @@ ShallowWrapper {
                 "children": "Speed",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "fontSize": 10,
+                  "fontSize": 12,
                 },
               },
               "ref": null,
@@ -862,12 +412,14 @@ ShallowWrapper {
               "props": Object {
                 "accessible": true,
                 "allowFontScaling": true,
-                "children": "36 km/h",
+                "children": "0 km/h",
                 "ellipsizeMode": "tail",
-                "style": Object {},
+                "style": Object {
+                  "fontSize": 10,
+                },
               },
               "ref": null,
-              "rendered": "36 km/h",
+              "rendered": "0 km/h",
               "type": [Function],
             },
           ],
@@ -885,7 +437,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "fontSize": 10,
+                    "fontSize": 12,
                   }
                 }
               >
@@ -895,9 +447,13 @@ ShallowWrapper {
                 accessible={true}
                 allowFontScaling={true}
                 ellipsizeMode="tail"
-                style={Object {}}
+                style={
+                  Object {
+                    "fontSize": 10,
+                  }
+                }
               >
-                10 m
+                0 m
               </Text>,
             ],
             "style": Object {
@@ -919,7 +475,7 @@ ShallowWrapper {
                 "children": "Altitude",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "fontSize": 10,
+                  "fontSize": 12,
                 },
               },
               "ref": null,
@@ -933,12 +489,14 @@ ShallowWrapper {
               "props": Object {
                 "accessible": true,
                 "allowFontScaling": true,
-                "children": "10 m",
+                "children": "0 m",
                 "ellipsizeMode": "tail",
-                "style": Object {},
+                "style": Object {
+                  "fontSize": 10,
+                },
               },
               "ref": null,
-              "rendered": "10 m",
+              "rendered": "0 m",
               "type": [Function],
             },
           ],

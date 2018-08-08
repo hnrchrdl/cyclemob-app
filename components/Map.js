@@ -67,8 +67,6 @@ class Map extends React.PureComponent {
       longitudeDelta
     };
 
-    console.log(route);
-
     return (
       <MapView
         ref={el => (this.map = el)}

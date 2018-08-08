@@ -1,50 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { StyleSheet, View, Text } from 'react-native';
-
-import Button from './Button';
+import PropTypes from 'prop-types';
 import { MaterialIcons } from '@expo/vector-icons';
-
-class MarkerDetails extends React.PureComponent {
-  render() {
-    const {
-      marker,
-      onClose,
-      onSetAsTarget,
-      onSetAsWaypoint,
-      onRemove
-    } = this.props;
-    return (
-      <View style={styles.container}>
-        <View style={styles.containerInner}>
-          <View>
-            <Text style={styles.title}>
-              <MaterialIcons name="place" />
-              {marker.title}
-            </Text>
-            <Text style={styles.description}>{marker.description}</Text>
-            <View style={styles.toolbar}>
-              <Button
-                onPress={() => onSetAsTarget(marker)}
-                iconName="directions"
-              />
-              <Button onPress={() => onSetAsWaypoint(marker)} iconName="add" />
-            </View>
-          </View>
-          <View>
-            <View style={styles.toolbar}>
-              <Button
-                iconName="location-off"
-                onPress={() => onRemove(marker)}
-              />
-              <Button iconName="close" onPress={onClose} />
-            </View>
-          </View>
-        </View>
-      </View>
-    );
-  }
-}
+import Button from './Button';
 
 MarkerDetails.propTypes = {
   marker: PropTypes.object.isRequired,
@@ -53,6 +11,41 @@ MarkerDetails.propTypes = {
   onClose: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired
 };
+
+function MarkerDetails({
+  marker,
+  onClose,
+  onSetAsTarget,
+  onSetAsWaypoint,
+  onRemove
+}) {
+  return (
+    <View style={styles.container}>
+      <View style={styles.containerInner}>
+        <View>
+          <Text style={styles.title}>
+            <MaterialIcons name="place" />
+            {marker.title}
+          </Text>
+          <Text style={styles.description}>{marker.description}</Text>
+          <View style={styles.toolbar}>
+            <Button
+              onPress={() => onSetAsTarget(marker)}
+              iconName="directions"
+            />
+            <Button onPress={() => onSetAsWaypoint(marker)} iconName="add" />
+          </View>
+        </View>
+        <View>
+          <View style={styles.toolbar}>
+            <Button iconName="location-off" onPress={() => onRemove(marker)} />
+            <Button iconName="close" onPress={onClose} />
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -75,4 +68,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   }
 });
+
 export default MarkerDetails;

@@ -10,6 +10,7 @@ Toolbar.propTypes = {
   onToggleShowMenu: PropTypes.func.isRequired,
   followUserLocation: PropTypes.bool.isRequired
 };
+
 function Toolbar({
   onToggleShowSearch,
   onToggleUserLocation,
@@ -32,14 +33,12 @@ function Toolbar({
           size={20}
         />
       </TouchableOpacity>
-      <TouchableOpacity style={styles.toolbarItem}>
-        <MaterialIcons
-          name="info-outline"
-          size={20}
-          onPress={onToggleShowBikecomputer}
-        />
+      <TouchableOpacity
+        style={styles.toolbarItem}
+        onPress={onToggleShowBikecomputer}
+      >
+        <MaterialIcons name="info-outline" size={20} />
       </TouchableOpacity>
-
       <TouchableOpacity style={styles.toolbarItem} onPress={onToggleShowMenu}>
         <MaterialIcons name="menu" size={20} />
       </TouchableOpacity>

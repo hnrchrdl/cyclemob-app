@@ -9,32 +9,9 @@ import {
 } from 'react-native';
 import Button from './Button';
 import PropTypes from 'prop-types';
-import { MaterialIcons } from '@expo/vector-icons';
 import { getPlacesAutocomplete, getPlaceDetails } from '../lib/gmaps-api';
 import { createUUID } from '../lib/helper';
 import { debounce } from 'lodash';
-
-class SearchResultItem extends React.Component {
-  onPress = () => {
-    const { item } = this.props;
-    this.props.onItemSelect(item);
-  };
-  render() {
-    const { item } = this.props;
-    const { main_text } = item.structured_formatting;
-    const { description } = item;
-    return (
-      <TouchableOpacity style={styles.resultItem} onPress={this.onPress}>
-        <Text style={styles.resultItemName}>{main_text}</Text>
-        <Text style={styles.resultItemVicinity}>{description}</Text>
-      </TouchableOpacity>
-    );
-  }
-}
-SearchResultItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  onItemSelect: PropTypes.func.isRequired
-};
 
 class Search extends React.PureComponent {
   constructor() {
@@ -44,6 +21,24 @@ class Search extends React.PureComponent {
       sessionToken: createUUID()
     };
   }
+  static propTypes = {
+    position: PropTypes.shape({
+      coords: PropTypes.shape({
+        latitude: PropTypes.number,
+        longitude: PropTypes.number,
+        speed: PropTypes.number,
+        accuracy: PropTypes.number,
+        altitude: PropTypes.number,
+        heading: PropTypes.number
+      }),
+      mocked: PropTypes.bool,
+      timestamp: PropTypes.number
+    }).isRequired,
+    onItemSelect: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired
+  };
+  static ResultItem = ResultItem;
+
   onSearchTextChange = input => {
     if (input.length === 0) {
       this.setState({
@@ -86,7 +81,7 @@ class Search extends React.PureComponent {
             <FlatList
               data={this.state.result}
               renderItem={({ item }) => (
-                <SearchResultItem
+                <Search.ResultItem
                   key={item.place_id}
                   item={item}
                   onItemSelect={this.onSearchResultSelect}
@@ -100,10 +95,25 @@ class Search extends React.PureComponent {
     );
   }
 }
-Search.propTypes = {
-  onItemSelect: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  position: PropTypes.object.isRequired
+
+function ResultItem({ item, onItemSelect }) {
+  return (
+    <TouchableOpacity
+      style={styles.resultItem}
+      onPress={() => onItemSelect(item)}
+    >
+      <Text style={styles.resultItemName}>{item.structured_formatting}</Text>
+      <Text style={styles.resultItemVicinity}>{item.description}</Text>
+    </TouchableOpacity>
+  );
+}
+
+ResultItem.propTypes = {
+  item: PropTypes.shape({
+    structured_formatting: PropTypes.string,
+    description: PropTypes.string
+  }).isRequired,
+  onItemSelect: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({

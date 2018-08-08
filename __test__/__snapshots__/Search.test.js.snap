@@ -5,13 +5,13 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Search
-    onClose={[Function]}
-    onItemSelect={[Function]}
+    onClose={[MockFunction]}
+    onItemSelect={[MockFunction]}
     position={
       Object {
         "coords": Object {
           "latitude": 50,
-          "longitude": 50,
+          "longitude": 20,
         },
       }
     }
@@ -65,7 +65,7 @@ ShallowWrapper {
           >
             <Button
               iconName="close"
-              onPress={[Function]}
+              onPress={[MockFunction]}
             />
           </Component>
         </Component>,
@@ -114,7 +114,7 @@ ShallowWrapper {
             >
               <Button
                 iconName="close"
-                onPress={[Function]}
+                onPress={[MockFunction]}
               />
             </Component>,
           ],
@@ -173,7 +173,7 @@ ShallowWrapper {
             "props": Object {
               "children": <Button
                 iconName="close"
-                onPress={[Function]}
+                onPress={[MockFunction]}
               />,
               "style": Object {
                 "flex": 0,
@@ -183,10 +183,10 @@ ShallowWrapper {
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "class",
+              "nodeType": "function",
               "props": Object {
                 "iconName": "close",
-                "onPress": [Function],
+                "onPress": [MockFunction],
               },
               "ref": null,
               "rendered": null,
@@ -244,7 +244,7 @@ ShallowWrapper {
             >
               <Button
                 iconName="close"
-                onPress={[Function]}
+                onPress={[MockFunction]}
               />
             </Component>
           </Component>,
@@ -293,7 +293,7 @@ ShallowWrapper {
               >
                 <Button
                   iconName="close"
-                  onPress={[Function]}
+                  onPress={[MockFunction]}
                 />
               </Component>,
             ],
@@ -352,7 +352,7 @@ ShallowWrapper {
               "props": Object {
                 "children": <Button
                   iconName="close"
-                  onPress={[Function]}
+                  onPress={[MockFunction]}
                 />,
                 "style": Object {
                   "flex": 0,
@@ -362,10 +362,10 @@ ShallowWrapper {
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "class",
+                "nodeType": "function",
                 "props": Object {
                   "iconName": "close",
-                  "onPress": [Function],
+                  "onPress": [MockFunction],
                 },
                 "ref": null,
                 "rendered": null,

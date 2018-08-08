@@ -23,7 +23,7 @@ export default class App extends React.Component {
       position: null, // coords: { latitude, longitude, speed, accuracy, altitude, heading }, mocked, timestamp
       target: null, // coordinate: { latitude, longitude }, description, id, pinColor, title
       waypoints: null, // [coordinate: { latitude, longitude }, description, id, pinColor, title]
-      targetRoute: null //
+      targetRoute: null // [{latitude, longitude}]
     };
   }
 
@@ -99,24 +99,69 @@ export default class App extends React.Component {
     });
   };
 
-  setTarget = marker => {
+  setTarget = target => {
+    this.setState(
+      {
+        target
+      },
+      () => {
+        this.updateRoute();
+      }
+    );
+  };
+
+  unsetTarget = () => {
+    this.setState(
+      {
+        target: null
+      },
+      () => {
+        this.updateRoute();
+      }
+    );
+  };
+
+  setWaypoint = waypoint => {
+    this.setState(
+      state => ({
+        waypoints: [...state.waypoints, waypoint]
+      }),
+      () => {
+        this.updateRoute();
+      }
+    );
+  };
+
+  removeWaypoint = waypoint => {
+    this.setState(
+      state => ({
+        waypoins: state.waypoints.filter(point => point.id !== waypoint.id)
+      }),
+      () => {
+        this.updateRoute();
+      }
+    );
+  };
+
+  updateRoute = () => {
+    if (!this.state.target) {
+      this.setState({
+        targetRoute: null
+      });
+    }
     const origin = {
-      latitude: marker.coordinate.latitude,
-      longitude: marker.coordinate.longitude
+      latitude: this.state.target.coordinate.latitude,
+      longitude: this.state.target.coordinate.longitude
     };
     const destination = {
       latitude: this.state.position.coords.latitude,
       longitude: this.state.position.coords.longitude
     };
-    getRoute(origin, destination).then(result => {
+    getRoute(origin, destination).then(targetRoute => {
       this.setState({
-        targetRoute: result.map(x => ({ latitude: x.lat, longitude: x.lng }))
+        targetRoute
       });
     });
-  };
-
-  setWaypoint = marker => {
-    console.log(marker);
   };
 
   dismissMarkerDetails = () => {

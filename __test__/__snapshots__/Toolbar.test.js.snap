@@ -6,10 +6,10 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Toolbar
     followUserLocation={false}
-    onToggleShowBikecomputer={[Function]}
-    onToggleShowMenu={[Function]}
-    onToggleShowSearch={[Function]}
-    onToggleUserLocation={[Function]}
+    onToggleShowBikecomputer={[MockFunction]}
+    onToggleShowMenu={[MockFunction]}
+    onToggleShowSearch={[MockFunction]}
+    onToggleUserLocation={[MockFunction]}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -26,7 +26,7 @@ ShallowWrapper {
       "children": Array [
         <TouchableOpacity
           activeOpacity={0.2}
-          onPress={[Function]}
+          onPress={[MockFunction]}
           style={
             Object {
               "alignItems": "center",
@@ -44,7 +44,7 @@ ShallowWrapper {
         </TouchableOpacity>,
         <TouchableOpacity
           activeOpacity={0.2}
-          onPress={[Function]}
+          onPress={[MockFunction]}
           style={
             Object {
               "alignItems": "center",
@@ -63,6 +63,7 @@ ShallowWrapper {
         </TouchableOpacity>,
         <TouchableOpacity
           activeOpacity={0.2}
+          onPress={[MockFunction]}
           style={
             Object {
               "alignItems": "center",
@@ -75,13 +76,12 @@ ShallowWrapper {
           <Icon
             allowFontScaling={false}
             name="info-outline"
-            onPress={[Function]}
             size={20}
           />
         </TouchableOpacity>,
         <TouchableOpacity
           activeOpacity={0.2}
-          onPress={[Function]}
+          onPress={[MockFunction]}
           style={
             Object {
               "alignItems": "center",
@@ -118,7 +118,7 @@ ShallowWrapper {
             name="search"
             size={20}
           />,
-          "onPress": [Function],
+          "onPress": [MockFunction],
           "style": Object {
             "alignItems": "center",
             "backgroundColor": "transparent",
@@ -154,7 +154,7 @@ ShallowWrapper {
             size={20}
             style={Object {}}
           />,
-          "onPress": [Function],
+          "onPress": [MockFunction],
           "style": Object {
             "alignItems": "center",
             "backgroundColor": "transparent",
@@ -188,9 +188,9 @@ ShallowWrapper {
           "children": <Icon
             allowFontScaling={false}
             name="info-outline"
-            onPress={[Function]}
             size={20}
           />,
+          "onPress": [MockFunction],
           "style": Object {
             "alignItems": "center",
             "backgroundColor": "transparent",
@@ -206,7 +206,6 @@ ShallowWrapper {
           "props": Object {
             "allowFontScaling": false,
             "name": "info-outline",
-            "onPress": [Function],
             "size": 20,
           },
           "ref": null,
@@ -226,7 +225,7 @@ ShallowWrapper {
             name="menu"
             size={20}
           />,
-          "onPress": [Function],
+          "onPress": [MockFunction],
           "style": Object {
             "alignItems": "center",
             "backgroundColor": "transparent",
@@ -262,7 +261,7 @@ ShallowWrapper {
         "children": Array [
           <TouchableOpacity
             activeOpacity={0.2}
-            onPress={[Function]}
+            onPress={[MockFunction]}
             style={
               Object {
                 "alignItems": "center",
@@ -280,7 +279,7 @@ ShallowWrapper {
           </TouchableOpacity>,
           <TouchableOpacity
             activeOpacity={0.2}
-            onPress={[Function]}
+            onPress={[MockFunction]}
             style={
               Object {
                 "alignItems": "center",
@@ -299,6 +298,7 @@ ShallowWrapper {
           </TouchableOpacity>,
           <TouchableOpacity
             activeOpacity={0.2}
+            onPress={[MockFunction]}
             style={
               Object {
                 "alignItems": "center",
@@ -311,13 +311,12 @@ ShallowWrapper {
             <Icon
               allowFontScaling={false}
               name="info-outline"
-              onPress={[Function]}
               size={20}
             />
           </TouchableOpacity>,
           <TouchableOpacity
             activeOpacity={0.2}
-            onPress={[Function]}
+            onPress={[MockFunction]}
             style={
               Object {
                 "alignItems": "center",
@@ -354,7 +353,7 @@ ShallowWrapper {
               name="search"
               size={20}
             />,
-            "onPress": [Function],
+            "onPress": [MockFunction],
             "style": Object {
               "alignItems": "center",
               "backgroundColor": "transparent",
@@ -390,7 +389,7 @@ ShallowWrapper {
               size={20}
               style={Object {}}
             />,
-            "onPress": [Function],
+            "onPress": [MockFunction],
             "style": Object {
               "alignItems": "center",
               "backgroundColor": "transparent",
@@ -424,9 +423,9 @@ ShallowWrapper {
             "children": <Icon
               allowFontScaling={false}
               name="info-outline"
-              onPress={[Function]}
               size={20}
             />,
+            "onPress": [MockFunction],
             "style": Object {
               "alignItems": "center",
               "backgroundColor": "transparent",
@@ -442,7 +441,6 @@ ShallowWrapper {
             "props": Object {
               "allowFontScaling": false,
               "name": "info-outline",
-              "onPress": [Function],
               "size": 20,
             },
             "ref": null,
@@ -462,7 +460,7 @@ ShallowWrapper {
               name="menu"
               size={20}
             />,
-            "onPress": [Function],
+            "onPress": [MockFunction],
             "style": Object {
               "alignItems": "center",
               "backgroundColor": "transparent",

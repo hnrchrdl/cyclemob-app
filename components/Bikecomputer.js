@@ -3,9 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 Bikecomputer.propTypes = {
-  speed: PropTypes.number,
-  altitude: PropTypes.number
+  speed: PropTypes.number, // m/s
+  altitude: PropTypes.number // m
 };
+
 function Bikecomputer({ speed, altitude }) {
   return (
     <View style={styles.container}>
@@ -33,11 +34,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eee'
   },
-  containerInnerSmall: {
-    flex: 1
-  },
-  containerInnerBig: { flex: 3, flexDirection: 'row' },
-  containerTwoRows: { flex: 1 },
   displayItem: {
     padding: 10,
     flex: 1,
@@ -45,8 +41,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   displayItemDescription: {
-    fontSize: 10
+    fontSize: 12
   },
-  displayItemValue: {}
+  displayItemValue: {
+    fontSize: 10
+  }
 });
+
 export default Bikecomputer;

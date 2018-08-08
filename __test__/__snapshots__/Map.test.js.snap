@@ -31,7 +31,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <MockUrlTile
-          urlTemplate="https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=your_api_key_here"
+          urlTemplate="https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=mock_tf_api_key"
           zIndex={-1}
         />,
         Array [],
@@ -61,7 +61,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "urlTemplate": "https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=your_api_key_here",
+          "urlTemplate": "https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=mock_tf_api_key",
           "zIndex": -1,
         },
         "ref": null,
@@ -80,7 +80,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <MockUrlTile
-            urlTemplate="https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=your_api_key_here"
+            urlTemplate="https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=mock_tf_api_key"
             zIndex={-1}
           />,
           Array [],
@@ -110,7 +110,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "urlTemplate": "https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=your_api_key_here",
+            "urlTemplate": "https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=mock_tf_api_key",
             "zIndex": -1,
           },
           "ref": null,
