@@ -12,9 +12,439 @@ ShallowWrapper {
     "simulateEvent": [Function],
     "unmount": [Function],
   },
-  Symbol(enzyme.__node__): null,
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <Map
+          followPosition={true}
+          marker={Array []}
+          onMarkerPressed={[Function]}
+          position={
+            Object {
+              "coords": Object {
+                "altitude": 0,
+                "latitude": 50,
+                "longitude": 10,
+                "speed": 1000,
+              },
+            }
+          }
+          route={null}
+        />,
+        <Component
+          style={
+            Object {
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "tomato",
+              }
+            }
+          >
+            50
+             | 
+            10
+            |
+             
+          </Text>
+        </Component>,
+        <Component
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+            }
+          }
+        >
+          <Toolbar
+            followUserLocation={true}
+            onToggleShowBikecomputer={[Function]}
+            onToggleShowMenu={[Function]}
+            onToggleShowSearch={[Function]}
+            onToggleUserLocation={[Function]}
+          />
+        </Component>,
+      ],
+      "style": Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "followPosition": true,
+          "marker": Array [],
+          "onMarkerPressed": [Function],
+          "position": Object {
+            "coords": Object {
+              "altitude": 0,
+              "latitude": 50,
+              "longitude": 10,
+              "speed": 1000,
+            },
+          },
+          "route": null,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "tomato",
+                }
+              }
+            >
+              50
+               | 
+              10
+              |
+               
+            </Text>,
+            false,
+          ],
+          "style": Object {
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": Array [
+                50,
+                " | ",
+                10,
+                "|",
+                " ",
+              ],
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "color": "tomato",
+              },
+            },
+            "ref": null,
+            "rendered": Array [
+              50,
+              " | ",
+              10,
+              "|",
+              " ",
+            ],
+            "type": [Function],
+          },
+          false,
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            false,
+            null,
+            false,
+            <Toolbar
+              followUserLocation={true}
+              onToggleShowBikecomputer={[Function]}
+              onToggleShowMenu={[Function]}
+              onToggleShowSearch={[Function]}
+              onToggleUserLocation={[Function]}
+            />,
+          ],
+          "style": Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          false,
+          null,
+          false,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "followUserLocation": true,
+              "onToggleShowBikecomputer": [Function],
+              "onToggleShowMenu": [Function],
+              "onToggleShowSearch": [Function],
+              "onToggleUserLocation": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
   Symbol(enzyme.__nodes__): Array [
-    null,
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Map
+            followPosition={true}
+            marker={Array []}
+            onMarkerPressed={[Function]}
+            position={
+              Object {
+                "coords": Object {
+                  "altitude": 0,
+                  "latitude": 50,
+                  "longitude": 10,
+                  "speed": 1000,
+                },
+              }
+            }
+            route={null}
+          />,
+          <Component
+            style={
+              Object {
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "color": "tomato",
+                }
+              }
+            >
+              50
+               | 
+              10
+              |
+               
+            </Text>
+          </Component>,
+          <Component
+            style={
+              Object {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+              }
+            }
+          >
+            <Toolbar
+              followUserLocation={true}
+              onToggleShowBikecomputer={[Function]}
+              onToggleShowMenu={[Function]}
+              onToggleShowSearch={[Function]}
+              onToggleUserLocation={[Function]}
+            />
+          </Component>,
+        ],
+        "style": Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "followPosition": true,
+            "marker": Array [],
+            "onMarkerPressed": [Function],
+            "position": Object {
+              "coords": Object {
+                "altitude": 0,
+                "latitude": 50,
+                "longitude": 10,
+                "speed": 1000,
+              },
+            },
+            "route": null,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "tomato",
+                  }
+                }
+              >
+                50
+                 | 
+                10
+                |
+                 
+              </Text>,
+              false,
+            ],
+            "style": Object {
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": Array [
+                  50,
+                  " | ",
+                  10,
+                  "|",
+                  " ",
+                ],
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "color": "tomato",
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                50,
+                " | ",
+                10,
+                "|",
+                " ",
+              ],
+              "type": [Function],
+            },
+            false,
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              false,
+              null,
+              false,
+              <Toolbar
+                followUserLocation={true}
+                onToggleShowBikecomputer={[Function]}
+                onToggleShowMenu={[Function]}
+                onToggleShowSearch={[Function]}
+                onToggleUserLocation={[Function]}
+              />,
+            ],
+            "style": Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            false,
+            null,
+            false,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "followUserLocation": true,
+                "onToggleShowBikecomputer": [Function],
+                "onToggleShowMenu": [Function],
+                "onToggleShowSearch": [Function],
+                "onToggleUserLocation": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
   ],
   Symbol(enzyme.__options__): Object {
     "adapter": ReactSixteenAdapter {

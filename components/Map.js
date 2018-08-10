@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import MapView, {
   MAP_TYPES,
@@ -8,7 +8,6 @@ import MapView, {
   Polyline
 } from 'react-native-maps';
 import { thunderforest_api_key } from '../env';
-import { RangeObservable } from 'rxjs/observable/RangeObservable';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -17,37 +16,24 @@ const TILE_URLS = {
 };
 
 class Map extends React.PureComponent {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      isInitialized: false
-    };
-    this.map = null;
-  }
+  map = null;
 
   componentDidUpdate() {
-    if (
-      // this.state.isInitialized &&
-      this.props.position &&
-      this.props.followPosition &&
-      this.map
-    ) {
-      const latitude = this.props.position.coords.latitude;
-      const longitude = this.props.position.coords.longitude;
-      const coord = {
-        latitude,
-        longitude
-      };
-      this.map.animateToCoordinate(coord);
+    if (this.props.position && this.props.followPosition && this.map) {
+      this.map.animateToCoordinate(this.props.position.coords);
     }
   }
 
-  onMapLongPress = e => {
-    console.log('long press', e);
+  onMapLongPress = () => {
+    if (this.props.onMapLongPressed) {
+      this.props.onMapLongPressed();
+    }
   };
 
   onMarkerPressed = e => {
-    this.props.onMarkerPressed(e);
+    if (this.props.onMarkerPressed) {
+      this.props.onMarkerPressed(e);
+    }
   };
 
   render() {
@@ -77,15 +63,16 @@ class Map extends React.PureComponent {
         onLongPress={this.onMapLongPress}
       >
         <UrlTile urlTemplate={TILE_URLS.ocm} zIndex={-1} />
-        {marker.map(_marker => (
-          <Marker
-            key={_marker.id}
-            coordinate={_marker.coordinate}
-            onPress={() => {
-              this.onMarkerPressed(_marker);
-            }}
-          />
-        ))}
+        {marker &&
+          marker.map(_marker => (
+            <Marker
+              key={_marker.id}
+              coordinate={_marker.coordinate}
+              onPress={() => {
+                this.onMarkerPressed(_marker);
+              }}
+            />
+          ))}
         {route && (
           <Polyline
             coordinates={route}
@@ -98,11 +85,30 @@ class Map extends React.PureComponent {
   }
 }
 Map.propTypes = {
-  position: PropTypes.object,
+  position: PropTypes.shape({
+    coords: PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number
+    })
+  }),
   followPosition: PropTypes.bool.isRequired,
-  marker: PropTypes.array.isRequired,
-  onMarkerPressed: PropTypes.func.isRequired,
-  route: PropTypes.array
+  marker: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      coordinate: PropTypes.shape({
+        latitude: PropTypes.number,
+        longitude: PropTypes.number
+      })
+    })
+  ).isRequired,
+  onMarkerPressed: PropTypes.func,
+  route: PropTypes.arrayOf(
+    PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number
+    })
+  ),
+  onMapLongPressed: PropTypes.func
 };
 
 const styles = StyleSheet.create({

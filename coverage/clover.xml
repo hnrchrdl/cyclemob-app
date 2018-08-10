@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1533917973112" clover="3.2.0">
+  <project timestamp="1533917973112" name="All files">
+    <metrics statements="147" coveredstatements="141" conditionals="65" coveredconditionals="54" methods="75" coveredmethods="69" elements="287" coveredelements="264" complexity="0" loc="147" ncloc="147" packages="3" files="11" classes="11">
+      <package name="cyclemob-app">
+        <metrics statements="33" coveredstatements="32" conditionals="16" coveredconditionals="15" methods="31" coveredmethods="27"/>
+        <file name="App.js" path="E:\hr\dev\cyclemob-app\App.js">
+          <metrics statements="30" coveredstatements="29" conditionals="16" coveredconditionals="15" methods="30" coveredmethods="26"/>
+          <line num="17" count="9" type="stmt"/>
+          <line num="18" count="9" type="stmt"/>
+          <line num="35" count="9" type="stmt"/>
+          <line num="36" count="9" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="49" count="2" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+          <line num="61" count="1" type="stmt"/>
+          <line num="67" count="2" type="stmt"/>
+          <line num="74" count="2" type="stmt"/>
+          <line num="82" count="1" type="stmt"/>
+          <line num="83" count="2" type="stmt"/>
+          <line num="89" count="1" type="stmt"/>
+          <line num="95" count="1" type="stmt"/>
+          <line num="101" count="1" type="stmt"/>
+          <line num="106" count="1" type="stmt"/>
+          <line num="112" count="1" type="stmt"/>
+          <line num="117" count="1" type="stmt"/>
+          <line num="145" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="146" count="1" type="stmt"/>
+          <line num="150" count="1" type="stmt"/>
+          <line num="151" count="1" type="stmt"/>
+          <line num="152" count="1" type="stmt"/>
+          <line num="153" count="1" type="stmt"/>
+          <line num="164" count="1" type="stmt"/>
+          <line num="170" count="1" type="stmt"/>
+          <line num="177" count="0" type="stmt"/>
+          <line num="189" count="35" type="stmt"/>
+          <line num="190" count="35" type="cond" truecount="2" falsecount="0"/>
+          <line num="250" count="1" type="stmt"/>
+        </file>
+        <file name="setupTests.js" path="E:\hr\dev\cyclemob-app\setupTests.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="6" count="10" type="stmt"/>
+          <line num="8" count="10" type="stmt"/>
+          <line num="10" count="3" type="stmt"/>
+        </file>
+      </package>
+      <package name="cyclemob-app.components">
+        <metrics statements="54" coveredstatements="52" conditionals="25" coveredconditionals="22" methods="23" coveredmethods="21"/>
+        <file name="Bikecomputer.js" path="E:\hr\dev\cyclemob-app\components\Bikecomputer.js">
+          <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+          <line num="5" count="2" type="stmt"/>
+          <line num="11" count="4" type="stmt"/>
+          <line num="27" count="2" type="stmt"/>
+        </file>
+        <file name="Button.js" path="E:\hr\dev\cyclemob-app\components\Button.js">
+          <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+          <line num="6" count="5" type="stmt"/>
+          <line num="13" count="4" type="stmt"/>
+          <line num="20" count="5" type="stmt"/>
+        </file>
+        <file name="Map.js" path="E:\hr\dev\cyclemob-app\components\Map.js">
+          <metrics statements="23" coveredstatements="22" conditionals="15" coveredconditionals="13" methods="7" coveredmethods="6"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="22" count="10" type="cond" truecount="5" falsecount="0"/>
+          <line num="23" count="3" type="stmt"/>
+          <line num="28" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="34" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="40" count="19" type="cond" truecount="2" falsecount="0"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="44" count="18" type="stmt"/>
+          <line num="45" count="18" type="stmt"/>
+          <line num="46" count="18" type="stmt"/>
+          <line num="47" count="18" type="stmt"/>
+          <line num="48" count="18" type="stmt"/>
+          <line num="49" count="18" type="stmt"/>
+          <line num="56" count="18" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="68" count="4" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+          <line num="87" count="2" type="stmt"/>
+          <line num="114" count="2" type="stmt"/>
+        </file>
+        <file name="MarkerDetails.js" path="E:\hr\dev\cyclemob-app\components\MarkerDetails.js">
+          <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="30" count="7" type="stmt"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="49" count="1" type="stmt"/>
+          <line num="58" count="2" type="stmt"/>
+        </file>
+        <file name="RouteDetails.js" path="E:\hr\dev\cyclemob-app\components\RouteDetails.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="7" count="2" type="stmt"/>
+          <line num="15" count="5" type="stmt"/>
+          <line num="26" count="2" type="stmt"/>
+        </file>
+        <file name="Search.js" path="E:\hr\dev\cyclemob-app\components\Search.js">
+          <metrics statements="14" coveredstatements="13" conditionals="2" coveredconditionals="2" methods="9" coveredmethods="8"/>
+          <line num="36" count="4" type="stmt"/>
+          <line num="37" count="4" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="45" count="1" type="stmt"/>
+          <line num="47" count="1" type="stmt"/>
+          <line num="53" count="1" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+          <line num="59" count="5" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="95" count="4" type="stmt"/>
+          <line num="98" count="1" type="stmt"/>
+          <line num="108" count="2" type="stmt"/>
+          <line num="118" count="2" type="stmt"/>
+        </file>
+        <file name="Toolbar.js" path="E:\hr\dev\cyclemob-app\components\Toolbar.js">
+          <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="6" count="2" type="stmt"/>
+          <line num="21" count="5" type="stmt"/>
+          <line num="49" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="cyclemob-app.lib">
+        <metrics statements="60" coveredstatements="57" conditionals="24" coveredconditionals="17" methods="21" coveredmethods="21"/>
+        <file name="gmaps-api.js" path="E:\hr\dev\cyclemob-app\lib\gmaps-api.js">
+          <metrics statements="34" coveredstatements="31" conditionals="8" coveredconditionals="5" methods="14" coveredmethods="14"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="2" type="stmt"/>
+          <line num="15" count="2" type="stmt"/>
+          <line num="18" count="2" type="stmt"/>
+          <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="27" count="2" type="stmt"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="35" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="43" count="3" type="stmt"/>
+          <line num="48" count="2" type="stmt"/>
+          <line num="55" count="3" type="stmt"/>
+          <line num="58" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="59" count="1" type="stmt"/>
+          <line num="60" count="315" type="stmt"/>
+          <line num="64" count="1" type="stmt"/>
+          <line num="65" count="1" type="stmt"/>
+          <line num="66" count="1" type="stmt"/>
+          <line num="68" count="1" type="stmt"/>
+          <line num="69" count="1" type="stmt"/>
+          <line num="70" count="1" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+          <line num="74" count="0" type="stmt"/>
+          <line num="79" count="7" type="stmt"/>
+          <line num="80" count="7" type="stmt"/>
+          <line num="81" count="34" type="stmt"/>
+          <line num="82" count="32" type="stmt"/>
+        </file>
+        <file name="helper.js" path="E:\hr\dev\cyclemob-app\lib\helper.js">
+          <metrics statements="26" coveredstatements="26" conditionals="16" coveredconditionals="12" methods="7" coveredmethods="7"/>
+          <line num="1" count="4" type="stmt"/>
+          <line num="2" count="6" type="stmt"/>
+          <line num="3" count="186" type="stmt"/>
+          <line num="4" count="186" type="cond" truecount="2" falsecount="0"/>
+          <line num="5" count="186" type="stmt"/>
+          <line num="9" count="4" type="stmt"/>
+          <line num="16" count="3" type="stmt"/>
+          <line num="27" count="4" type="stmt"/>
+          <line num="28" count="4" type="stmt"/>
+          <line num="31" count="4" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="49" count="8" type="stmt"/>
+          <line num="50" count="8" type="stmt"/>
+          <line num="51" count="8" type="stmt"/>
+          <line num="53" count="8" type="cond" truecount="1" falsecount="1"/>
+          <line num="54" count="8" type="cond" truecount="2" falsecount="0"/>
+          <line num="55" count="8" type="cond" truecount="2" falsecount="0"/>
+          <line num="57" count="8" type="stmt"/>
+          <line num="62" count="12" type="stmt"/>
+          <line num="63" count="12" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

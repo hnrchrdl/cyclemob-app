@@ -4,10 +4,7 @@ exports[`matches snapshots 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Bikecomputer
-    altitude={10}
-    speed={10}
-  />,
+  Symbol(enzyme.__unrendered__): <Bikecomputer />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -53,7 +50,7 @@ ShallowWrapper {
               }
             }
           >
-            36 km/h
+            0 km/h
           </Text>
         </Component>,
         <Component
@@ -88,7 +85,7 @@ ShallowWrapper {
               }
             }
           >
-            10 m
+            0 m
           </Text>
         </Component>,
       ],
@@ -132,7 +129,7 @@ ShallowWrapper {
                 }
               }
             >
-              36 km/h
+              0 km/h
             </Text>,
           ],
           "style": Object {
@@ -168,14 +165,14 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "36 km/h",
+              "children": "0 km/h",
               "ellipsizeMode": "tail",
               "style": Object {
                 "fontSize": 10,
               },
             },
             "ref": null,
-            "rendered": "36 km/h",
+            "rendered": "0 km/h",
             "type": [Function],
           },
         ],
@@ -209,7 +206,7 @@ ShallowWrapper {
                 }
               }
             >
-              10 m
+              0 m
             </Text>,
           ],
           "style": Object {
@@ -245,14 +242,14 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "10 m",
+              "children": "0 m",
               "ellipsizeMode": "tail",
               "style": Object {
                 "fontSize": 10,
               },
             },
             "ref": null,
-            "rendered": "10 m",
+            "rendered": "0 m",
             "type": [Function],
           },
         ],
@@ -300,7 +297,7 @@ ShallowWrapper {
                 }
               }
             >
-              36 km/h
+              0 km/h
             </Text>
           </Component>,
           <Component
@@ -335,7 +332,7 @@ ShallowWrapper {
                 }
               }
             >
-              10 m
+              0 m
             </Text>
           </Component>,
         ],
@@ -379,7 +376,7 @@ ShallowWrapper {
                   }
                 }
               >
-                36 km/h
+                0 km/h
               </Text>,
             ],
             "style": Object {
@@ -415,14 +412,14 @@ ShallowWrapper {
               "props": Object {
                 "accessible": true,
                 "allowFontScaling": true,
-                "children": "36 km/h",
+                "children": "0 km/h",
                 "ellipsizeMode": "tail",
                 "style": Object {
                   "fontSize": 10,
                 },
               },
               "ref": null,
-              "rendered": "36 km/h",
+              "rendered": "0 km/h",
               "type": [Function],
             },
           ],
@@ -456,7 +453,7 @@ ShallowWrapper {
                   }
                 }
               >
-                10 m
+                0 m
               </Text>,
             ],
             "style": Object {
@@ -492,14 +489,14 @@ ShallowWrapper {
               "props": Object {
                 "accessible": true,
                 "allowFontScaling": true,
-                "children": "10 m",
+                "children": "0 m",
                 "ellipsizeMode": "tail",
                 "style": Object {
                   "fontSize": 10,
                 },
               },
               "ref": null,
-              "rendered": "10 m",
+              "rendered": "0 m",
               "type": [Function],
             },
           ],

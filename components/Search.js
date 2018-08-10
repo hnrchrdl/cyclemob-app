@@ -41,18 +41,12 @@ class Search extends React.PureComponent {
   }
 
   onSearchTextChange = input => {
-    if (input.length === 0) {
-      this.setState({
-        sessionToken: createUUID()
-      });
-    } else {
-      const location = this.props.position.coords;
-      getPlacesAutocomplete(input, location, this.state.sessionToken).then(
-        data => {
-          this.setState({ result: data });
-        }
-      );
-    }
+    const location = this.props.position.coords;
+    getPlacesAutocomplete(input, location, this.state.sessionToken).then(
+      data => {
+        this.setState({ result: data });
+      }
+    );
   };
 
   onSearchResultSelect = item => {
@@ -65,6 +59,9 @@ class Search extends React.PureComponent {
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
+          <View style={{ flex: 0 }}>
+            <Button iconName="back" onPress={this.props.onClose} />
+          </View>
           <View style={{ flex: 1 }}>
             <TextInput
               autoFocus
@@ -73,9 +70,6 @@ class Search extends React.PureComponent {
               onChangeText={debounce(this.onSearchTextChange, 800)}
             />
           </View>
-          <View style={{ flex: 0 }}>
-            <Button iconName="close" onPress={this.props.onClose} />
-          </View>
         </View>
         {this.state.result.length > 0 && (
           <View style={styles.resultContainer}>
@@ -83,7 +77,7 @@ class Search extends React.PureComponent {
               data={this.state.result}
               renderItem={({ item }) => (
                 <Search.ResultItem
-                  key={item.place_id}
+                  key={item.id}
                   item={item}
                   onItemSelect={this.onSearchResultSelect}
                 />

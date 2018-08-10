@@ -5,7 +5,15 @@ import { MaterialIcons } from '@expo/vector-icons';
 import Button from './Button';
 
 MarkerDetails.propTypes = {
-  marker: PropTypes.object.isRequired,
+  marker: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    coordinates: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired
+    })
+  }).isRequired,
   onSetAsTarget: PropTypes.func.isRequired,
   onSetAsWaypoint: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
@@ -33,7 +41,7 @@ function MarkerDetails({
               onPress={() => onSetAsTarget(marker)}
               iconName="directions"
             />
-            <Button onPress={() => onSetAsWaypoint(marker)} iconName="add" />
+            {/* <Button onPress={() => onSetAsWaypoint(marker)} iconName="add" /> */}
           </View>
         </View>
         <View>

@@ -12,7 +12,7 @@ ShallowWrapper {
       Object {
         "coords": Object {
           "latitude": 50,
-          "longitude": 50,
+          "longitude": 10,
         },
       }
     }
@@ -40,7 +40,7 @@ ShallowWrapper {
       "initialRegion": Object {
         "latitude": 50,
         "latitudeDelta": 0.02,
-        "longitude": 50,
+        "longitude": 10,
         "longitudeDelta": 0.011244377811094454,
       },
       "mapType": "None",
@@ -89,7 +89,7 @@ ShallowWrapper {
         "initialRegion": Object {
           "latitude": 50,
           "latitudeDelta": 0.02,
-          "longitude": 50,
+          "longitude": 10,
           "longitudeDelta": 0.011244377811094454,
         },
         "mapType": "None",

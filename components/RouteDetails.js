@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import Button from './Button';
 import { sToTime, mToKm } from '../lib/helper';
 
 RouteDetails.propTypes = {
@@ -16,6 +17,7 @@ function RouteDetails({ distance, duration, onRemove, onClose }) {
       <View style={styles.containerInner}>
         <Text>{mToKm(distance)}</Text>
         <Text>{sToTime(duration)}</Text>
+        <Button iconName="close" onPress={onClose} />
       </View>
     </View>
   );

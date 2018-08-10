@@ -1,16 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Platform, Text } from 'react-native';
+import { Constants } from 'expo';
 
 import Map from './components/Map';
 import Search from './components/Search';
 import Bikecomputer from './components/Bikecomputer';
 import Toolbar from './components/Toolbar';
 import MarkerDetails from './components/MarkerDetails';
-import { Constants } from 'expo';
-import { getDistance, createMarker } from './lib/helper';
+import RouteDetails from './components/RouteDetails';
+import { createMarker } from './lib/helper';
 import { watchPosition } from './lib/geolocation';
 import { getRoute } from './lib/gmaps-api';
-import RouteDetails from './components/RouteDetails';
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -25,32 +25,17 @@ export default class App extends React.Component {
       target: null, // coordinate: { latitude, longitude }, description, id, pinColor, title
       waypoints: null, // [coordinate: { latitude, longitude }, description, id, pinColor, title]
       targetRoute: null, // [{latitude, longitude}],
-      targetDistance: 0,
-      targetDuration: 0,
-      showTargetRouteDetails: true
+      targetDistance: null,
+      targetDuration: null,
+      showTargetRouteDetails: false
     };
   }
 
   componentDidMount() {
     watchPosition(position => {
-      this.setState(state => ({
-        position,
-        etappeDistance:
-          state.isRecording && state.position
-            ? state.etappeDistance +
-              getDistance(state.position.coords, position.coords)
-            : state.etappeDistance,
-        marker:
-          state.isRecording && state.position
-            ? [
-              ...state.marker,
-              createMarker({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              })
-            ]
-            : state.marker
-      }));
+      this.setState({
+        position
+      });
     });
   }
 
@@ -78,7 +63,7 @@ export default class App extends React.Component {
     }));
   };
 
-  onLocationSelected = item => {
+  selectLocation = item => {
     const marker = createMarker({
       id: item.id,
       title: item.name,
@@ -93,13 +78,22 @@ export default class App extends React.Component {
     }));
   };
 
-  onToggleShowMenu = () => {
-    console.log('show Menu');
+  removeMarker = ({ id }) => {
+    this.setState(state => ({
+      marker: state.marker.filter(marker => marker.id !== id),
+      markerDetails: null
+    }));
   };
 
-  onMarkerPressed = markerDetails => {
+  showMarkerDetails = markerDetails => {
     this.setState({
       markerDetails
+    });
+  };
+
+  dismissMarkerDetails = () => {
+    this.setState({
+      markerDetails: null
     });
   };
 
@@ -126,25 +120,25 @@ export default class App extends React.Component {
   };
 
   setWaypoint = waypoint => {
-    this.setState(
-      state => ({
-        waypoints: [...state.waypoints, waypoint]
-      }),
-      () => {
-        this.updateRoute();
-      }
-    );
+    // this.setState(
+    //   state => ({
+    //     waypoints: [...state.waypoints, waypoint]
+    //   }),
+    //   () => {
+    //     this.updateRoute();
+    //   }
+    // );
   };
 
   removeWaypoint = waypoint => {
-    this.setState(
-      state => ({
-        waypoins: state.waypoints.filter(point => point.id !== waypoint.id)
-      }),
-      () => {
-        this.updateRoute();
-      }
-    );
+    // this.setState(
+    //   state => ({
+    //     waypoins: state.waypoints.filter(point => point.id !== waypoint.id)
+    //   }),
+    //   () => {
+    //     this.updateRoute();
+    //   }
+    // );
   };
 
   updateRoute = () => {
@@ -152,38 +146,21 @@ export default class App extends React.Component {
       this.setState({
         targetRoute: null
       });
-    }
-    const origin = {
-      latitude: this.state.position.coords.latitude,
-      longitude: this.state.position.coords.longitude
-    };
-    const destination = {
-      latitude: this.state.target.coordinate.latitude,
-      longitude: this.state.target.coordinate.longitude
-    };
-    getRoute(origin, destination).then(({ route, distance, duration }) => {
-      this.setState({
-        targetRoute: route,
-        targetDistance: distance,
-        targetDuration: duration
+    } else {
+      const origin = this.state.position.coords;
+      const destination = this.state.target.coordinate;
+      getRoute(origin, destination).then(({ route, distance, duration }) => {
+        this.setState({
+          targetRoute: route,
+          targetDistance: distance,
+          targetDuration: duration,
+          showTargetRouteDetails: true
+        });
       });
-    });
+    }
   };
 
-  dismissMarkerDetails = () => {
-    this.setState({
-      markerDetails: null
-    });
-  };
-
-  removeMarker = marker => {
-    this.setState(state => ({
-      marker: state.marker.filter(_marker => _marker.id !== marker.id),
-      markerDetails: null
-    }));
-  };
-
-  onRouteDetailsClose = () => {
+  hideTargetRouteDetails = () => {
     this.setState({
       showTargetRouteDetails: false
     });
@@ -191,8 +168,13 @@ export default class App extends React.Component {
 
   removeTargetRoute = () => {
     this.setState({
-      targetRoute: null
+      targetRoute: null,
+      showTargetRouteDetails: false
     });
+  };
+
+  toggleShowMenu = () => {
+    console.log('show Menu');
   };
 
   render() {
@@ -210,7 +192,7 @@ export default class App extends React.Component {
         <Map
           followPosition={followUserLocation}
           marker={marker}
-          onMarkerPressed={this.onMarkerPressed}
+          onMarkerPressed={this.showMarkerDetails}
           position={position}
           route={targetRoute}
         />
@@ -222,7 +204,7 @@ export default class App extends React.Component {
           )}
           {showSearch && (
             <Search
-              onItemSelect={this.onLocationSelected}
+              onItemSelect={this.selectLocation}
               onClose={this.hideSearch}
               position={position}
             />
@@ -233,7 +215,7 @@ export default class App extends React.Component {
             <RouteDetails
               distance={this.state.targetDistance}
               duration={this.state.targetDuration}
-              onClose={this.onRouteDetailsClose}
+              onClose={this.hideTargetRouteDetails}
               onRemove={() => {}}
             />
           )}
@@ -257,7 +239,7 @@ export default class App extends React.Component {
             onToggleShowSearch={this.toggleShowSearch}
             onToggleUserLocation={this.toggleFollowUserLocation}
             onToggleShowBikecomputer={this.toggleShowBikecomputer}
-            onToggleShowMenu={this.onToggleShowMenu}
+            onToggleShowMenu={this.toggleShowMenu}
           />
         </View>
       </View>
