@@ -18,9 +18,37 @@ const TILE_URLS = {
 class Map extends React.PureComponent {
   map = null;
 
-  componentDidUpdate() {
-    if (this.props.position && this.props.followPosition && this.map) {
-      this.map.animateToCoordinate(this.props.position.coords);
+  componentDidUpdate(prevProps) {
+    if (this.map) {
+      if (
+        (this.props.route &&
+          JSON.stringify(prevProps.route) !==
+            JSON.stringify(this.props.route)) ||
+        (this.props.marker &&
+          JSON.stringify(prevProps.marker) !==
+            JSON.stringify(this.props.marker))
+      ) {
+        const coords = [
+          ...(this.props.position
+            ? [
+              {
+                latitude: this.props.position.coords.latitude,
+                longitude: this.props.position.coords.longitude
+              }
+            ]
+            : []),
+          ...(this.props.route ? this.props.route : []),
+          ...(this.props.marker ? this.props.marker.map(m => m.coordinate) : [])
+        ];
+        if (coords.length > 1) {
+          this.map.fitToCoordinates(coords, {
+            edgePadding: { top: 100, left: 50, right: 50, bottom: 200 },
+            animated: true
+          });
+        }
+      } else if (this.props.position && this.props.followPosition && this.map) {
+        this.map.animateToCoordinate(this.props.position.coords);
+      }
     }
   }
 
@@ -35,6 +63,8 @@ class Map extends React.PureComponent {
       this.props.onMarkerPressed(e);
     }
   };
+
+  isActive = marker => marker.id === this.props.activeMarkerId;
 
   render() {
     if (!this.props.position) {
@@ -68,6 +98,7 @@ class Map extends React.PureComponent {
             <Marker
               key={_marker.id}
               coordinate={_marker.coordinate}
+              pinColor={this.isActive(_marker) ? 'tomato' : 'gold'}
               onPress={() => {
                 this.onMarkerPressed(_marker);
               }}
@@ -101,6 +132,7 @@ Map.propTypes = {
       })
     })
   ).isRequired,
+  activeMarkerId: PropTypes.string,
   onMarkerPressed: PropTypes.func,
   route: PropTypes.arrayOf(
     PropTypes.shape({

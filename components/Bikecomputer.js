@@ -12,13 +12,18 @@ function Bikecomputer({ speed, altitude }) {
     <View style={styles.container}>
       <View style={styles.displayItem}>
         <Text style={styles.displayItemDescription}>Speed</Text>
-        <Text style={styles.displayItemValue}>{`${((speed || 0) * 60 * 60) /
-          1000} km/h`}</Text>
+        <Text style={styles.displayItemValue}>
+          {speed
+            ? `${(((speed || 0) * 60 * 60) / 1000).toFixed(0)} km/h`
+            : '--'}
+        </Text>
       </View>
 
       <View style={styles.displayItem}>
         <Text style={styles.displayItemDescription}>Altitude</Text>
-        <Text style={styles.displayItemValue}>{`${altitude || 0} m`}</Text>
+        <Text style={styles.displayItemValue}>
+          {altitude ? `${altitude.toFixed(1)} m` : '--'}
+        </Text>
       </View>
     </View>
   );
@@ -27,12 +32,11 @@ function Bikecomputer({ speed, altitude }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 5,
-    paddingBottom: 5,
+    paddingTop: 4,
+    paddingBottom: 4,
     flexDirection: 'row',
-    backgroundColor: 'rgba(255,255,255,.9)',
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee'
+    opacity: 0.9,
+    backgroundColor: '#fff'
   },
   displayItem: {
     padding: 10,
@@ -41,10 +45,10 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   displayItemDescription: {
-    fontSize: 12
+    fontSize: 10
   },
   displayItemValue: {
-    fontSize: 10
+    fontSize: 14
   }
 });
 

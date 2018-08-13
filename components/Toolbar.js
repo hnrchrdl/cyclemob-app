@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 Toolbar.propTypes = {
   onToggleShowSearch: PropTypes.func.isRequired,
   onToggleUserLocation: PropTypes.func.isRequired,
-  onToggleShowBikecomputer: PropTypes.func.isRequired,
   onToggleShowMenu: PropTypes.func.isRequired,
   followUserLocation: PropTypes.bool.isRequired
 };
@@ -15,7 +14,6 @@ function Toolbar({
   onToggleShowSearch,
   onToggleUserLocation,
   followUserLocation,
-  onToggleShowBikecomputer,
   onToggleShowMenu
 }) {
   return (
@@ -33,12 +31,6 @@ function Toolbar({
           size={20}
         />
       </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.toolbarItem}
-        onPress={onToggleShowBikecomputer}
-      >
-        <MaterialIcons name="info-outline" size={20} />
-      </TouchableOpacity>
       <TouchableOpacity style={styles.toolbarItem} onPress={onToggleShowMenu}>
         <MaterialIcons name="menu" size={20} />
       </TouchableOpacity>
@@ -51,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     height: 50,
-    backgroundColor: 'rgba(255,255,255,.95)'
+    backgroundColor: 'rgb(255,255,255)'
   },
   toolbarItem: {
     flex: 1,

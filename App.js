@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Platform, Text } from 'react-native';
+import { StyleSheet, View, Platform } from 'react-native';
 import { Constants } from 'expo';
 
 import Map from './components/Map';
@@ -18,7 +18,6 @@ export default class App extends React.Component {
     this.state = {
       followUserLocation: true, // bool
       showSearch: false, // bool
-      showBikecomputer: false, // bool
       marker: [], // coordinate: { latitude, longitude }, description, id, pinColor, title
       markerDetails: null, // coordinate: { latitude, longitude }, description, id, pinColor, title
       position: null, // coords: { latitude, longitude, speed, accuracy, altitude, heading }, mocked, timestamp
@@ -57,12 +56,6 @@ export default class App extends React.Component {
     });
   };
 
-  toggleShowBikecomputer = () => {
-    this.setState(state => ({
-      showBikecomputer: !state.showBikecomputer
-    }));
-  };
-
   selectLocation = item => {
     const marker = createMarker({
       id: item.id,
@@ -79,10 +72,18 @@ export default class App extends React.Component {
   };
 
   removeMarker = ({ id }) => {
-    this.setState(state => ({
-      marker: state.marker.filter(marker => marker.id !== id),
-      markerDetails: null
-    }));
+    this.setState(
+      state => ({
+        marker: state.marker.filter(marker => marker.id !== id),
+        markerDetails: null,
+        target: !state.target || state.target.id === id ? null : state.target
+      }),
+      () => {
+        if (!this.state.target) {
+          this.updateRoute();
+        }
+      }
+    );
   };
 
   showMarkerDetails = markerDetails => {
@@ -182,53 +183,24 @@ export default class App extends React.Component {
       position,
       followUserLocation,
       showSearch,
-      showBikecomputer,
       marker,
       markerDetails,
-      targetRoute
+      targetRoute,
+      target,
+      showTargetRouteDetails
     } = this.state;
     return position ? (
       <View style={styles.containerMap}>
         <Map
           followPosition={followUserLocation}
           marker={marker}
+          activeMarkerId={markerDetails ? markerDetails.id : null}
           onMarkerPressed={this.showMarkerDetails}
           position={position}
           route={targetRoute}
         />
-        <View style={styles.containerOnMapTop}>
-          {position && (
-            <Text style={{ color: 'tomato' }}>
-              {position.coords.latitude} | {position.coords.longitude}|{' '}
-            </Text>
-          )}
-          {showSearch && (
-            <Search
-              onItemSelect={this.selectLocation}
-              onClose={this.hideSearch}
-              position={position}
-            />
-          )}
-        </View>
         <View style={styles.containerOnMapBottom}>
-          {this.state.showTargetRouteDetails && (
-            <RouteDetails
-              distance={this.state.targetDistance}
-              duration={this.state.targetDuration}
-              onClose={this.hideTargetRouteDetails}
-              onRemove={() => {}}
-            />
-          )}
-          {markerDetails && (
-            <MarkerDetails
-              marker={markerDetails}
-              onClose={this.dismissMarkerDetails}
-              onSetAsTarget={this.setTarget}
-              onSetAsWaypoint={this.setWaypoint}
-              onRemove={this.removeMarker}
-            />
-          )}
-          {showBikecomputer && (
+          {!showSearch && (
             <Bikecomputer
               speed={position.coords.speed}
               altitude={position.coords.altitude}
@@ -238,9 +210,39 @@ export default class App extends React.Component {
             followUserLocation={followUserLocation}
             onToggleShowSearch={this.toggleShowSearch}
             onToggleUserLocation={this.toggleFollowUserLocation}
-            onToggleShowBikecomputer={this.toggleShowBikecomputer}
             onToggleShowMenu={this.toggleShowMenu}
           />
+        </View>
+        <View style={styles.containerOnMapTop}>
+          {markerDetails &&
+            !showSearch && (
+            <MarkerDetails
+              marker={markerDetails}
+              onClose={this.dismissMarkerDetails}
+              onSetAsTarget={this.setTarget}
+              onSetAsWaypoint={this.setWaypoint}
+              onRemove={this.removeMarker}
+            />
+          )}
+          {showTargetRouteDetails &&
+            markerDetails &&
+            target &&
+            markerDetails.id === target.id &&
+            !showSearch && (
+            <RouteDetails
+              distance={this.state.targetDistance}
+              duration={this.state.targetDuration}
+              onClose={this.hideTargetRouteDetails}
+              onRemove={this.removeTargetRoute}
+            />
+          )}
+          {showSearch && (
+            <Search
+              onItemSelect={this.selectLocation}
+              onClose={this.hideSearch}
+              position={position}
+            />
+          )}
         </View>
       </View>
     ) : null;
@@ -249,31 +251,14 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   containerMap: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0
+    ...StyleSheet.absoluteFillObject
   },
   containerOnMapBottom: {
-    position: 'absolute',
-    // top: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
-    left: 0,
-    right: 0,
-    bottom: 0
+    ...StyleSheet.absoluteFillObject,
+    top: 'auto'
   },
   containerOnMapTop: {
-    position: 'absolute',
-    top: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
-    left: 0,
-    right: 0
-  },
-  containerButtonsContainer: {
-    flex: 1,
-    margin: 5,
-    marginBottom: 40,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end'
+    ...StyleSheet.absoluteFillObject,
+    top: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
   }
 });

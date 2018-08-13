@@ -45,15 +45,6 @@ it('toggles Search and hides', () => {
   expect(tree.update().find('Search')).toHaveLength(0);
 });
 
-it('toggles bikecomputer', () => {
-  const tree = shallow(<App />);
-  expect(tree.state('showBikecomputer')).toBe(false);
-  expect(tree.update().find('Bikecomputer')).toHaveLength(0);
-  tree.instance().toggleShowBikecomputer();
-  expect(tree.state('showBikecomputer')).toBe(true);
-  expect(tree.update().find('Bikecomputer')).toHaveLength(1);
-});
-
 it('handles location selection and removes marker', () => {
   const tree = shallow(<App />);
   tree.instance().toggleShowSearch(); // show search
@@ -127,11 +118,9 @@ it('sets and unsets target routes', done => {
     expect(tree.state('targetDistance')).toBe(70);
     expect(tree.state('targetDuration')).toBe(100);
     expect(tree.state('showTargetRouteDetails')).toBe(true);
-    expect(tree.update().find('RouteDetails')).toHaveLength(1);
     tree.instance().hideTargetRouteDetails();
     expect(tree.state('targetRoute')).toHaveLength(2);
     expect(tree.state('showTargetRouteDetails')).toBe(false);
-    expect(tree.update().find('RouteDetails')).toHaveLength(0);
     tree.instance().removeTargetRoute();
     expect(tree.state('targetRoute')).toBeNull();
     expect(tree.state('showTargetRouteDetails')).toBe(false);

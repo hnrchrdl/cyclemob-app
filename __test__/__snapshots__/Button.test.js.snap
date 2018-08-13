@@ -28,17 +28,17 @@ ShallowWrapper {
         style={Object {}}
       />,
       "onPress": [MockFunction],
-      "style": Object {
-        "alignItems": "center",
-        "backgroundColor": "#fff",
-        "borderColor": "#eee",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 50,
-        "justifyContent": "center",
-        "margin": 5,
-        "width": 50,
-      },
+      "style": Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "height": 50,
+          "justifyContent": "center",
+          "margin": 5,
+          "width": 50,
+        },
+        Object {},
+      ],
     },
     "ref": null,
     "rendered": Object {
@@ -71,17 +71,17 @@ ShallowWrapper {
           style={Object {}}
         />,
         "onPress": [MockFunction],
-        "style": Object {
-          "alignItems": "center",
-          "backgroundColor": "#fff",
-          "borderColor": "#eee",
-          "borderRadius": 100,
-          "borderWidth": 1,
-          "height": 50,
-          "justifyContent": "center",
-          "margin": 5,
-          "width": 50,
-        },
+        "style": Array [
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "height": 50,
+            "justifyContent": "center",
+            "margin": 5,
+            "width": 50,
+          },
+          Object {},
+        ],
       },
       "ref": null,
       "rendered": Object {

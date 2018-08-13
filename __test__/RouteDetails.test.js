@@ -5,7 +5,6 @@ import RouteDetails from '../components/RouteDetails';
 const props = {
   distance: 100,
   duration: 40,
-  onClose: jest.fn(),
   onRemove: jest.fn()
 };
 
@@ -28,20 +27,8 @@ it('reacts to marker changes', () => {
   expect(tree).toMatchSnapshot();
 });
 
-it('handles close button presses', () => {
+it('handles remove button presses', () => {
   const tree = shallow(<RouteDetails {...props} />);
-  tree
-    .find('Button')
-    .find({ iconName: 'close' })
-    .simulate('press');
-  expect(props.onClose).toHaveBeenCalledTimes(1);
+  tree.simulate('press');
+  expect(props.onRemove).toHaveBeenCalledTimes(1);
 });
-
-// it('handles remove button presses', () => {
-//     const tree = shallow(<RouteDetails {...props} />);
-//     tree
-//       .find('Button')
-//       .find({ iconName: 'close' })
-//       .simulate('press');
-//     expect(props.onClose).toHaveBeenCalledTimes(1);
-//   });

@@ -105,7 +105,6 @@ it('matches snapshot for result item', () => {
 
 it('should render result items correctly', () => {
   const tree = shallow(<Search.ResultItem {...resultItemProps} />);
-  expect(tree.find('Text')).toHaveLength(2);
   expect(
     tree
       .find('Text')

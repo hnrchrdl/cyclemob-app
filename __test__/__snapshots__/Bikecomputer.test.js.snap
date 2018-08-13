@@ -34,7 +34,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "fontSize": 12,
+                "fontSize": 10,
               }
             }
           >
@@ -46,11 +46,11 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "fontSize": 10,
+                "fontSize": 14,
               }
             }
           >
-            0 km/h
+            --
           </Text>
         </Component>,
         <Component
@@ -69,7 +69,7 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "fontSize": 12,
+                "fontSize": 10,
               }
             }
           >
@@ -81,22 +81,21 @@ ShallowWrapper {
             ellipsizeMode="tail"
             style={
               Object {
-                "fontSize": 10,
+                "fontSize": 14,
               }
             }
           >
-            0 m
+            --
           </Text>
         </Component>,
       ],
       "style": Object {
-        "backgroundColor": "rgba(255,255,255,.9)",
-        "borderBottomColor": "#eee",
-        "borderBottomWidth": 1,
+        "backgroundColor": "#fff",
         "flex": 1,
         "flexDirection": "row",
-        "paddingBottom": 5,
-        "paddingTop": 5,
+        "opacity": 0.9,
+        "paddingBottom": 4,
+        "paddingTop": 4,
       },
     },
     "ref": null,
@@ -113,7 +112,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 12,
+                  "fontSize": 10,
                 }
               }
             >
@@ -125,11 +124,11 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 10,
+                  "fontSize": 14,
                 }
               }
             >
-              0 km/h
+              --
             </Text>,
           ],
           "style": Object {
@@ -151,7 +150,7 @@ ShallowWrapper {
               "children": "Speed",
               "ellipsizeMode": "tail",
               "style": Object {
-                "fontSize": 12,
+                "fontSize": 10,
               },
             },
             "ref": null,
@@ -165,14 +164,14 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "0 km/h",
+              "children": "--",
               "ellipsizeMode": "tail",
               "style": Object {
-                "fontSize": 10,
+                "fontSize": 14,
               },
             },
             "ref": null,
-            "rendered": "0 km/h",
+            "rendered": "--",
             "type": [Function],
           },
         ],
@@ -190,7 +189,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 12,
+                  "fontSize": 10,
                 }
               }
             >
@@ -202,11 +201,11 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 10,
+                  "fontSize": 14,
                 }
               }
             >
-              0 m
+              --
             </Text>,
           ],
           "style": Object {
@@ -228,7 +227,7 @@ ShallowWrapper {
               "children": "Altitude",
               "ellipsizeMode": "tail",
               "style": Object {
-                "fontSize": 12,
+                "fontSize": 10,
               },
             },
             "ref": null,
@@ -242,14 +241,14 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "0 m",
+              "children": "--",
               "ellipsizeMode": "tail",
               "style": Object {
-                "fontSize": 10,
+                "fontSize": 14,
               },
             },
             "ref": null,
-            "rendered": "0 m",
+            "rendered": "--",
             "type": [Function],
           },
         ],
@@ -281,7 +280,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 12,
+                  "fontSize": 10,
                 }
               }
             >
@@ -293,11 +292,11 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 10,
+                  "fontSize": 14,
                 }
               }
             >
-              0 km/h
+              --
             </Text>
           </Component>,
           <Component
@@ -316,7 +315,7 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 12,
+                  "fontSize": 10,
                 }
               }
             >
@@ -328,22 +327,21 @@ ShallowWrapper {
               ellipsizeMode="tail"
               style={
                 Object {
-                  "fontSize": 10,
+                  "fontSize": 14,
                 }
               }
             >
-              0 m
+              --
             </Text>
           </Component>,
         ],
         "style": Object {
-          "backgroundColor": "rgba(255,255,255,.9)",
-          "borderBottomColor": "#eee",
-          "borderBottomWidth": 1,
+          "backgroundColor": "#fff",
           "flex": 1,
           "flexDirection": "row",
-          "paddingBottom": 5,
-          "paddingTop": 5,
+          "opacity": 0.9,
+          "paddingBottom": 4,
+          "paddingTop": 4,
         },
       },
       "ref": null,
@@ -360,7 +358,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "fontSize": 12,
+                    "fontSize": 10,
                   }
                 }
               >
@@ -372,11 +370,11 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "fontSize": 10,
+                    "fontSize": 14,
                   }
                 }
               >
-                0 km/h
+                --
               </Text>,
             ],
             "style": Object {
@@ -398,7 +396,7 @@ ShallowWrapper {
                 "children": "Speed",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "fontSize": 12,
+                  "fontSize": 10,
                 },
               },
               "ref": null,
@@ -412,14 +410,14 @@ ShallowWrapper {
               "props": Object {
                 "accessible": true,
                 "allowFontScaling": true,
-                "children": "0 km/h",
+                "children": "--",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "fontSize": 10,
+                  "fontSize": 14,
                 },
               },
               "ref": null,
-              "rendered": "0 km/h",
+              "rendered": "--",
               "type": [Function],
             },
           ],
@@ -437,7 +435,7 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "fontSize": 12,
+                    "fontSize": 10,
                   }
                 }
               >
@@ -449,11 +447,11 @@ ShallowWrapper {
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "fontSize": 10,
+                    "fontSize": 14,
                   }
                 }
               >
-                0 m
+                --
               </Text>,
             ],
             "style": Object {
@@ -475,7 +473,7 @@ ShallowWrapper {
                 "children": "Altitude",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "fontSize": 12,
+                  "fontSize": 10,
                 },
               },
               "ref": null,
@@ -489,14 +487,14 @@ ShallowWrapper {
               "props": Object {
                 "accessible": true,
                 "allowFontScaling": true,
-                "children": "0 m",
+                "children": "--",
                 "ellipsizeMode": "tail",
                 "style": Object {
-                  "fontSize": 10,
+                  "fontSize": 14,
                 },
               },
               "ref": null,
-              "rendered": "0 m",
+              "rendered": "--",
               "type": [Function],
             },
           ],

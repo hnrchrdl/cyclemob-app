@@ -12,6 +12,7 @@ import PropTypes from 'prop-types';
 import { getPlacesAutocomplete, getPlaceDetails } from '../lib/gmaps-api';
 import { createUUID } from '../lib/helper';
 import { debounce } from 'lodash';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 class Search extends React.PureComponent {
   static propTypes = {
@@ -59,8 +60,8 @@ class Search extends React.PureComponent {
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <View style={{ flex: 0 }}>
-            <Button iconName="back" onPress={this.props.onClose} />
+          <View style={{ flex: 0, justifyContent: 'center' }}>
+            <Button iconName="arrow-back" onPress={this.props.onClose} />
           </View>
           <View style={{ flex: 1 }}>
             <TextInput
@@ -71,7 +72,8 @@ class Search extends React.PureComponent {
             />
           </View>
         </View>
-        {this.state.result.length > 0 && (
+        {this.state.result &&
+          this.state.result.length > 0 && (
           <View style={styles.resultContainer}>
             <FlatList
               data={this.state.result}
@@ -97,10 +99,19 @@ function ResultItem({ item, onItemSelect }) {
       style={styles.resultItem}
       onPress={() => onItemSelect(item)}
     >
-      <Text style={styles.resultItemName}>
-        {item.structured_formatting.main_text}
-      </Text>
-      <Text style={styles.resultItemVicinity}>{item.description}</Text>
+      <View style={styles.resultItemInner}>
+        <View style={styles.resultItemIcon}>
+          <Text>
+            <MaterialIcons name="place" size={20} />
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.resultItemName}>
+            {item.structured_formatting.main_text}
+          </Text>
+          <Text style={styles.resultItemVicinity}>{item.description}</Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -117,30 +128,44 @@ ResultItem.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    ...StyleSheet.absoluteFillObject,
     backgroundColor: '#fff',
-    opacity: 0.95
+    opacity: 0.9
   },
   inputContainer: {
     flexDirection: 'row'
   },
   textInput: {
-    paddingTop: 10,
+    marginTop: 20,
+    marginBottom: 20,
     paddingBottom: 10,
-    marginRight: 10
+    marginRight: 20
   },
   resultContainer: {
     borderTopColor: '#eee',
-    borderTopWidth: 1,
-    margin: 10
+    borderTopWidth: StyleSheet.hairlineWidth,
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 10
   },
   resultItem: {
-    marginTop: 10,
-    paddingTop: 10
+    marginTop: 5,
+    paddingTop: 5,
+    marginBottom: 8,
+    paddingBottom: 8
   },
-  resultItemName: {},
+  resultItemInner: {
+    flexDirection: 'row'
+  },
+  resultItemIcon: {
+    marginRight: 10,
+    justifyContent: 'center'
+  },
+  resultItemName: {
+    fontSize: 14
+  },
   resultItemVicinity: {
-    color: '#ccc'
+    fontSize: 10
   }
 });
 

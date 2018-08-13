@@ -30,25 +30,31 @@ function MarkerDetails({
   return (
     <View style={styles.container}>
       <View style={styles.containerInner}>
-        <View>
-          <Text style={styles.title}>
-            <MaterialIcons name="place" />
-            {marker.title}
-          </Text>
-          <Text style={styles.description}>{marker.description}</Text>
-          <View style={styles.toolbar}>
-            <Button
-              onPress={() => onSetAsTarget(marker)}
-              iconName="directions"
-            />
-            {/* <Button onPress={() => onSetAsWaypoint(marker)} iconName="add" /> */}
+        <View style={{ flex: 0 }}>
+          <Button iconName="arrow-back" onPress={onClose} />
+        </View>
+        <View style={{ flex: 1, padding: 5 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{ marginRight: 5 }}>
+              <MaterialIcons name="place" size={14} />
+            </Text>
+            <Text style={styles.title}>{marker.title}</Text>
+          </View>
+          <View>
+            <Text style={styles.description}>{marker.description}</Text>
           </View>
         </View>
-        <View>
-          <View style={styles.toolbar}>
-            <Button iconName="location-off" onPress={() => onRemove(marker)} />
-            <Button iconName="close" onPress={onClose} />
-          </View>
+        <View style={styles.toolbar}>
+          <Button
+            onPress={() => onSetAsTarget(marker)}
+            iconName="directions"
+            outline
+          />
+          <Button
+            iconName="location-off"
+            onPress={() => onRemove(marker)}
+            outline
+          />
         </View>
       </View>
     </View>
@@ -58,18 +64,18 @@ function MarkerDetails({
 const styles = StyleSheet.create({
   container: {
     padding: 10,
-    backgroundColor: 'rgba(255,255,255,0.8)'
+    backgroundColor: '#fff',
+    opacity: 0.9
   },
   containerInner: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   title: {
-    padding: 5,
     fontSize: 14
   },
   description: {
-    padding: 5,
     fontSize: 10
   },
   toolbar: {

@@ -19,6 +19,7 @@ ShallowWrapper {
     "props": Object {
       "children": Array [
         <Map
+          activeMarkerId={null}
           followPosition={true}
           marker={Array []}
           onMarkerPressed={[Function]}
@@ -37,29 +38,24 @@ ShallowWrapper {
         <Component
           style={
             Object {
+              "bottom": 0,
               "left": 0,
               "position": "absolute",
               "right": 0,
-              "top": 0,
+              "top": "auto",
             }
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "tomato",
-              }
-            }
-          >
-            50
-             | 
-            10
-            |
-             
-          </Text>
+          <Bikecomputer
+            altitude={0}
+            speed={1000}
+          />
+          <Toolbar
+            followUserLocation={true}
+            onToggleShowMenu={[Function]}
+            onToggleShowSearch={[Function]}
+            onToggleUserLocation={[Function]}
+          />
         </Component>,
         <Component
           style={
@@ -68,17 +64,10 @@ ShallowWrapper {
               "left": 0,
               "position": "absolute",
               "right": 0,
+              "top": 0,
             }
           }
-        >
-          <Toolbar
-            followUserLocation={true}
-            onToggleShowBikecomputer={[Function]}
-            onToggleShowMenu={[Function]}
-            onToggleShowSearch={[Function]}
-            onToggleUserLocation={[Function]}
-          />
-        </Component>,
+        />,
       ],
       "style": Object {
         "bottom": 0,
@@ -95,6 +84,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "activeMarkerId": null,
           "followPosition": true,
           "marker": Array [],
           "onMarkerPressed": [Function],
@@ -118,78 +108,12 @@ ShallowWrapper {
         "nodeType": "class",
         "props": Object {
           "children": Array [
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "tomato",
-                }
-              }
-            >
-              50
-               | 
-              10
-              |
-               
-            </Text>,
-            false,
-          ],
-          "style": Object {
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "accessible": true,
-              "allowFontScaling": true,
-              "children": Array [
-                50,
-                " | ",
-                10,
-                "|",
-                " ",
-              ],
-              "ellipsizeMode": "tail",
-              "style": Object {
-                "color": "tomato",
-              },
-            },
-            "ref": null,
-            "rendered": Array [
-              50,
-              " | ",
-              10,
-              "|",
-              " ",
-            ],
-            "type": [Function],
-          },
-          false,
-        ],
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": Array [
-            false,
-            null,
-            false,
+            <Bikecomputer
+              altitude={0}
+              speed={1000}
+            />,
             <Toolbar
               followUserLocation={true}
-              onToggleShowBikecomputer={[Function]}
               onToggleShowMenu={[Function]}
               onToggleShowSearch={[Function]}
               onToggleUserLocation={[Function]}
@@ -200,20 +124,29 @@ ShallowWrapper {
             "left": 0,
             "position": "absolute",
             "right": 0,
+            "top": "auto",
           },
         },
         "ref": null,
         "rendered": Array [
-          false,
-          null,
-          false,
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "altitude": 0,
+              "speed": 1000,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           Object {
             "instance": null,
             "key": undefined,
             "nodeType": "function",
             "props": Object {
               "followUserLocation": true,
-              "onToggleShowBikecomputer": [Function],
               "onToggleShowMenu": [Function],
               "onToggleShowSearch": [Function],
               "onToggleUserLocation": [Function],
@@ -222,6 +155,32 @@ ShallowWrapper {
             "rendered": null,
             "type": [Function],
           },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            null,
+            false,
+            false,
+          ],
+          "style": Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          null,
+          false,
+          false,
         ],
         "type": [Function],
       },
@@ -236,6 +195,7 @@ ShallowWrapper {
       "props": Object {
         "children": Array [
           <Map
+            activeMarkerId={null}
             followPosition={true}
             marker={Array []}
             onMarkerPressed={[Function]}
@@ -254,29 +214,24 @@ ShallowWrapper {
           <Component
             style={
               Object {
+                "bottom": 0,
                 "left": 0,
                 "position": "absolute",
                 "right": 0,
-                "top": 0,
+                "top": "auto",
               }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "color": "tomato",
-                }
-              }
-            >
-              50
-               | 
-              10
-              |
-               
-            </Text>
+            <Bikecomputer
+              altitude={0}
+              speed={1000}
+            />
+            <Toolbar
+              followUserLocation={true}
+              onToggleShowMenu={[Function]}
+              onToggleShowSearch={[Function]}
+              onToggleUserLocation={[Function]}
+            />
           </Component>,
           <Component
             style={
@@ -285,17 +240,10 @@ ShallowWrapper {
                 "left": 0,
                 "position": "absolute",
                 "right": 0,
+                "top": 0,
               }
             }
-          >
-            <Toolbar
-              followUserLocation={true}
-              onToggleShowBikecomputer={[Function]}
-              onToggleShowMenu={[Function]}
-              onToggleShowSearch={[Function]}
-              onToggleUserLocation={[Function]}
-            />
-          </Component>,
+          />,
         ],
         "style": Object {
           "bottom": 0,
@@ -312,6 +260,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "activeMarkerId": null,
             "followPosition": true,
             "marker": Array [],
             "onMarkerPressed": [Function],
@@ -335,78 +284,12 @@ ShallowWrapper {
           "nodeType": "class",
           "props": Object {
             "children": Array [
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "color": "tomato",
-                  }
-                }
-              >
-                50
-                 | 
-                10
-                |
-                 
-              </Text>,
-              false,
-            ],
-            "style": Object {
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-            },
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "accessible": true,
-                "allowFontScaling": true,
-                "children": Array [
-                  50,
-                  " | ",
-                  10,
-                  "|",
-                  " ",
-                ],
-                "ellipsizeMode": "tail",
-                "style": Object {
-                  "color": "tomato",
-                },
-              },
-              "ref": null,
-              "rendered": Array [
-                50,
-                " | ",
-                10,
-                "|",
-                " ",
-              ],
-              "type": [Function],
-            },
-            false,
-          ],
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "children": Array [
-              false,
-              null,
-              false,
+              <Bikecomputer
+                altitude={0}
+                speed={1000}
+              />,
               <Toolbar
                 followUserLocation={true}
-                onToggleShowBikecomputer={[Function]}
                 onToggleShowMenu={[Function]}
                 onToggleShowSearch={[Function]}
                 onToggleUserLocation={[Function]}
@@ -417,20 +300,29 @@ ShallowWrapper {
               "left": 0,
               "position": "absolute",
               "right": 0,
+              "top": "auto",
             },
           },
           "ref": null,
           "rendered": Array [
-            false,
-            null,
-            false,
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "altitude": 0,
+                "speed": 1000,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
             Object {
               "instance": null,
               "key": undefined,
               "nodeType": "function",
               "props": Object {
                 "followUserLocation": true,
-                "onToggleShowBikecomputer": [Function],
                 "onToggleShowMenu": [Function],
                 "onToggleShowSearch": [Function],
                 "onToggleUserLocation": [Function],
@@ -439,6 +331,32 @@ ShallowWrapper {
               "rendered": null,
               "type": [Function],
             },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              null,
+              false,
+              false,
+            ],
+            "style": Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            null,
+            false,
+            false,
           ],
           "type": [Function],
         },

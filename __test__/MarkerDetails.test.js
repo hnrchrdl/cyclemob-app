@@ -48,7 +48,7 @@ it('handles close button presses', () => {
   const tree = shallow(<MarkerDetails {...props} />);
   tree
     .find('Button')
-    .find({ iconName: 'close' })
+    .find({ iconName: 'arrow-back' })
     .simulate('press');
   expect(props.onClose).toHaveBeenCalledTimes(1);
 });

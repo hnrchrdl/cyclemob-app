@@ -36,12 +36,6 @@ it('should call correct callbacks on clicks', () => {
   expect(props.onToggleUserLocation).toHaveBeenCalled();
 
   tree
-    .findWhere(item => item.prop('name') === 'info-outline')
-    .parent()
-    .simulate('press');
-  expect(props.onToggleShowBikecomputer).toHaveBeenCalled();
-
-  tree
     .findWhere(item => item.prop('name') === 'menu')
     .parent()
     .simulate('press');

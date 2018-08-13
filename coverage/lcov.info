@@ -1,5 +1,5 @@
 TN:
-SF:E:\hr\dev\cyclemob-app\App.js
+SF:/home/hr/Dev/projects/cyclemob_app/App.js
 FN:16,(anonymous_0)
 FN:34,(anonymous_1)
 FN:35,(anonymous_2)
@@ -114,7 +114,7 @@ BRF:16
 BRH:15
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\setupTests.js
+SF:/home/hr/Dev/projects/cyclemob_app/setupTests.js
 FN:10,(anonymous_0)
 FNF:1
 FNH:1
@@ -128,7 +128,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\components\Bikecomputer.js
+SF:/home/hr/Dev/projects/cyclemob_app/components/Bikecomputer.js
 FN:10,Bikecomputer
 FNF:1
 FNH:1
@@ -146,7 +146,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\components\Button.js
+SF:/home/hr/Dev/projects/cyclemob_app/components/Button.js
 FN:12,Button
 FNF:1
 FNH:1
@@ -162,7 +162,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\components\Map.js
+SF:/home/hr/Dev/projects/cyclemob_app/components/Map.js
 FN:21,(anonymous_0)
 FN:27,(anonymous_1)
 FN:33,(anonymous_2)
@@ -223,7 +223,7 @@ BRF:15
 BRH:13
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\components\MarkerDetails.js
+SF:/home/hr/Dev/projects/cyclemob_app/components/MarkerDetails.js
 FN:23,MarkerDetails
 FN:41,(anonymous_1)
 FN:49,(anonymous_2)
@@ -243,7 +243,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\components\RouteDetails.js
+SF:/home/hr/Dev/projects/cyclemob_app/components/RouteDetails.js
 FN:14,RouteDetails
 FNF:1
 FNH:1
@@ -257,7 +257,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\components\Search.js
+SF:/home/hr/Dev/projects/cyclemob_app/components/Search.js
 FN:35,(anonymous_0)
 FN:43,(anonymous_1)
 FN:46,(anonymous_2)
@@ -300,7 +300,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\components\Toolbar.js
+SF:/home/hr/Dev/projects/cyclemob_app/components/Toolbar.js
 FN:14,Toolbar
 FNF:1
 FNH:1
@@ -316,7 +316,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\lib\gmaps-api.js
+SF:/home/hr/Dev/projects/cyclemob_app/lib/gmaps-api.js
 FN:7,(anonymous_0)
 FN:18,(anonymous_1)
 FN:20,(anonymous_2)
@@ -395,7 +395,7 @@ BRF:8
 BRH:5
 end_of_record
 TN:
-SF:E:\hr\dev\cyclemob-app\lib\helper.js
+SF:/home/hr/Dev/projects/cyclemob_app/lib/helper.js
 FN:1,(anonymous_0)
 FN:2,(anonymous_1)
 FN:9,(anonymous_2)

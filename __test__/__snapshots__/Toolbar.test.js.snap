@@ -75,31 +75,13 @@ ShallowWrapper {
         >
           <Icon
             allowFontScaling={false}
-            name="info-outline"
-            size={20}
-          />
-        </TouchableOpacity>,
-        <TouchableOpacity
-          activeOpacity={0.2}
-          onPress={[MockFunction]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "flex": 1,
-              "justifyContent": "center",
-            }
-          }
-        >
-          <Icon
-            allowFontScaling={false}
             name="menu"
             size={20}
           />
         </TouchableOpacity>,
       ],
       "style": Object {
-        "backgroundColor": "rgba(255,255,255,.95)",
+        "backgroundColor": "rgb(255,255,255)",
         "flex": 1,
         "flexDirection": "row",
         "height": 50,
@@ -172,41 +154,6 @@ ShallowWrapper {
             "name": "center-focus-strong",
             "size": 20,
             "style": Object {},
-          },
-          "ref": null,
-          "rendered": null,
-          "type": [Function],
-        },
-        "type": [Function],
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "activeOpacity": 0.2,
-          "children": <Icon
-            allowFontScaling={false}
-            name="info-outline"
-            size={20}
-          />,
-          "onPress": [MockFunction],
-          "style": Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "flex": 1,
-            "justifyContent": "center",
-          },
-        },
-        "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "allowFontScaling": false,
-            "name": "info-outline",
-            "size": 20,
           },
           "ref": null,
           "rendered": null,
@@ -310,31 +257,13 @@ ShallowWrapper {
           >
             <Icon
               allowFontScaling={false}
-              name="info-outline"
-              size={20}
-            />
-          </TouchableOpacity>,
-          <TouchableOpacity
-            activeOpacity={0.2}
-            onPress={[MockFunction]}
-            style={
-              Object {
-                "alignItems": "center",
-                "backgroundColor": "transparent",
-                "flex": 1,
-                "justifyContent": "center",
-              }
-            }
-          >
-            <Icon
-              allowFontScaling={false}
               name="menu"
               size={20}
             />
           </TouchableOpacity>,
         ],
         "style": Object {
-          "backgroundColor": "rgba(255,255,255,.95)",
+          "backgroundColor": "rgb(255,255,255)",
           "flex": 1,
           "flexDirection": "row",
           "height": 50,
@@ -407,41 +336,6 @@ ShallowWrapper {
               "name": "center-focus-strong",
               "size": 20,
               "style": Object {},
-            },
-            "ref": null,
-            "rendered": null,
-            "type": [Function],
-          },
-          "type": [Function],
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "class",
-          "props": Object {
-            "activeOpacity": 0.2,
-            "children": <Icon
-              allowFontScaling={false}
-              name="info-outline"
-              size={20}
-            />,
-            "onPress": [MockFunction],
-            "style": Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "flex": 1,
-              "justifyContent": "center",
-            },
-          },
-          "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "allowFontScaling": false,
-              "name": "info-outline",
-              "size": 20,
             },
             "ref": null,
             "rendered": null,
