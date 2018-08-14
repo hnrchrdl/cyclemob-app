@@ -6,7 +6,7 @@
     "version": "0.0.1",
     "sdkVersion": "27.0.0",
     "icon": "./app-icon.png",
-    "primaryColor": "#000000",
+    "primaryColor": "#ff6347",
     "splash": {
      "backgroundColor": "#ff6347",
       "image": "./app-icon.png"
