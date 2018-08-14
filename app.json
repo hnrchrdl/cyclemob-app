@@ -1,21 +1,21 @@
 {
   "expo": {
     "name": "Cyclemob",
-    "description": "Bikecomputer based on OpenCycleMap",
+    "description": "OpenCycleMap with bike-routing, speed-o-meter and altitude-o-meter. Free and open source. No support for offline at the moment.",
     "slug": "cyclemob",
     "version": "0.0.1",
     "sdkVersion": "27.0.0",
     "icon": "./app-icon.png",
     "primaryColor": "#000000",
     "splash": {
-     "backgroundColor": "#ffffff",
+     "backgroundColor": "#ff6347",
       "image": "./app-icon.png"
     },
     "ios": {
-      "bundleIdentifier": "hnrchrdl.cyclemob"
+      "bundleIdentifier": "com.hnrchrdl.cyclemob"
     },
     "android": {
-      "package": "hnrchrdl.cyclemob"
+      "package": "com.hnrchrdl.cyclemob"
     }
   }
 }
