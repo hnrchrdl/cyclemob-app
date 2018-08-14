@@ -14,7 +14,7 @@ function Bikecomputer({ speed, altitude }) {
         <Text style={styles.displayItemDescription}>Speed</Text>
         <Text style={styles.displayItemValue}>
           {speed
-            ? `${(((speed || 0) * 60 * 60) / 1000).toFixed(0)} km/h`
+            ? `${(((speed || 0) * 60 * 60) / 1000).toFixed(1)} km/h`
             : '--'}
         </Text>
       </View>

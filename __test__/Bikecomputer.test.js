@@ -23,6 +23,6 @@ it('matches snapshot with new props', () => {
     altitude: 10
   });
 
-  expect(tree.findWhere(item => item.text() === '72 km/h')).toHaveLength(1);
+  expect(tree.findWhere(item => item.text() === '72.0 km/h')).toHaveLength(1);
   expect(tree.findWhere(item => item.text() === '10.0 m')).toHaveLength(1);
 });
