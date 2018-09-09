@@ -3,12 +3,12 @@
     "name": "Cyclemob",
     "description": "OpenCycleMap with bike-routing, speed-o-meter and altitude-o-meter. Free and open source. No support for offline at the moment.",
     "slug": "cyclemob",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "sdkVersion": "27.0.0",
     "icon": "./app-icon.png",
     "primaryColor": "#ff6347",
     "splash": {
-     "backgroundColor": "#ff6347",
+      "backgroundColor": "#ff6347",
       "image": "./app-icon.png"
     },
     "ios": {
