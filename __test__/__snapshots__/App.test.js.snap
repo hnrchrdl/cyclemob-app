@@ -34,6 +34,7 @@ ShallowWrapper {
             }
           }
           route={null}
+          zoom={null}
         />,
         <Component
           style={
@@ -68,6 +69,49 @@ ShallowWrapper {
             }
           }
         />,
+        <Component
+          style={
+            Object {
+              "bottom": 51,
+              "flexDirection": "column",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <ToolbarVertical
+            items={
+              Array [
+                <Button
+                  iconName="landscape"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-plus-1"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-zero"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-neg-1"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="local-florist"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+              ]
+            }
+          />
+        </Component>,
       ],
       "style": Object {
         "bottom": 0,
@@ -97,6 +141,7 @@ ShallowWrapper {
             },
           },
           "route": null,
+          "zoom": null,
         },
         "ref": null,
         "rendered": null,
@@ -184,6 +229,90 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <ToolbarVertical
+            items={
+              Array [
+                <Button
+                  iconName="landscape"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-plus-1"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-zero"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-neg-1"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="local-florist"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+              ]
+            }
+          />,
+          "style": Object {
+            "bottom": 51,
+            "flexDirection": "column",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "items": Array [
+              <Button
+                iconName="landscape"
+                onPress={[Function]}
+                outline={true}
+              />,
+              <Button
+                iconName="exposure-plus-1"
+                onPress={[Function]}
+                outline={true}
+              />,
+              <Button
+                iconName="exposure-zero"
+                onPress={[Function]}
+                outline={true}
+              />,
+              <Button
+                iconName="exposure-neg-1"
+                onPress={[Function]}
+                outline={true}
+              />,
+              <Button
+                iconName="local-florist"
+                onPress={[Function]}
+                outline={true}
+              />,
+            ],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
     ],
     "type": [Function],
   },
@@ -210,6 +339,7 @@ ShallowWrapper {
               }
             }
             route={null}
+            zoom={null}
           />,
           <Component
             style={
@@ -244,6 +374,49 @@ ShallowWrapper {
               }
             }
           />,
+          <Component
+            style={
+              Object {
+                "bottom": 51,
+                "flexDirection": "column",
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              }
+            }
+          >
+            <ToolbarVertical
+              items={
+                Array [
+                  <Button
+                    iconName="landscape"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                  <Button
+                    iconName="exposure-plus-1"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                  <Button
+                    iconName="exposure-zero"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                  <Button
+                    iconName="exposure-neg-1"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                  <Button
+                    iconName="local-florist"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                ]
+              }
+            />
+          </Component>,
         ],
         "style": Object {
           "bottom": 0,
@@ -273,6 +446,7 @@ ShallowWrapper {
               },
             },
             "route": null,
+            "zoom": null,
           },
           "ref": null,
           "rendered": null,
@@ -358,6 +532,90 @@ ShallowWrapper {
             false,
             false,
           ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <ToolbarVertical
+              items={
+                Array [
+                  <Button
+                    iconName="landscape"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                  <Button
+                    iconName="exposure-plus-1"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                  <Button
+                    iconName="exposure-zero"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                  <Button
+                    iconName="exposure-neg-1"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                  <Button
+                    iconName="local-florist"
+                    onPress={[Function]}
+                    outline={true}
+                  />,
+                ]
+              }
+            />,
+            "style": Object {
+              "bottom": 51,
+              "flexDirection": "column",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "items": Array [
+                <Button
+                  iconName="landscape"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-plus-1"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-zero"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="exposure-neg-1"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+                <Button
+                  iconName="local-florist"
+                  onPress={[Function]}
+                  outline={true}
+                />,
+              ],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
           "type": [Function],
         },
       ],

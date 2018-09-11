@@ -2,12 +2,14 @@ import React from 'react';
 import { StyleSheet, View, Platform } from 'react-native';
 import { Constants } from 'expo';
 
+import Button from './components/Button';
 import Map from './components/Map';
 import Search from './components/Search';
 import Bikecomputer from './components/Bikecomputer';
-import Toolbar from './components/Toolbar';
 import MarkerDetails from './components/MarkerDetails';
 import RouteDetails from './components/RouteDetails';
+import Toolbar from './components/Toolbar';
+import ToolbarVertical from './components/ToolbarVertical';
 import { createMarker } from './lib/helper';
 import { watchPosition } from './lib/geolocation';
 import { getRoute } from './lib/gmaps-api';
@@ -20,7 +22,8 @@ export default class App extends React.Component {
       showSearch: false, // bool
       marker: [], // coordinate: { latitude, longitude }, description, id, pinColor, title
       markerDetails: null, // coordinate: { latitude, longitude }, description, id, pinColor, title
-      position: null, // coords: { latitude, longitude, speed, accuracy, altitude, heading }, mocked, timestamp
+      position: null, // coords: { latitude, longitude, speed, accuracy, altitude, heading }, mocked, timestamp,
+      zoom: null,
       target: null, // coordinate: { latitude, longitude }, description, id, pinColor, title
       waypoints: null, // [coordinate: { latitude, longitude }, description, id, pinColor, title]
       targetRoute: null, // [{latitude, longitude}],
@@ -178,6 +181,21 @@ export default class App extends React.Component {
     console.log('show Menu');
   };
 
+  zoomCurried = zoom => () => {
+    this.setState(
+      {
+        zoom
+      },
+      this.resetZoom
+    );
+  };
+
+  resetZoom = () => {
+    setTimeout(() => {
+      this.setState({ zoom: null });
+    }, 1000);
+  };
+
   render() {
     const {
       position,
@@ -187,7 +205,8 @@ export default class App extends React.Component {
       markerDetails,
       targetRoute,
       target,
-      showTargetRouteDetails
+      showTargetRouteDetails,
+      zoom
     } = this.state;
     return position ? (
       <View style={styles.containerMap}>
@@ -198,6 +217,7 @@ export default class App extends React.Component {
           onMarkerPressed={this.showMarkerDetails}
           position={position}
           route={targetRoute}
+          zoom={zoom}
         />
         <View style={styles.containerOnMapBottom}>
           {!showSearch && (
@@ -244,6 +264,42 @@ export default class App extends React.Component {
             />
           )}
         </View>
+        <View style={styles.containerOnMapRight}>
+          <ToolbarVertical
+            items={[
+              <Button
+                key={1}
+                onPress={this.zoomCurried(300)}
+                iconName="landscape"
+                outline
+              />,
+              <Button
+                key={2}
+                onPress={this.zoomCurried(100)}
+                iconName="exposure-plus-1"
+                outline
+              />,
+              <Button
+                key={3}
+                onPress={this.zoomCurried(25)}
+                iconName="exposure-zero"
+                outline
+              />,
+              <Button
+                key={4}
+                onPress={this.zoomCurried(10)}
+                iconName="exposure-neg-1"
+                outline
+              />,
+              <Button
+                key={5}
+                onPress={this.zoomCurried(2)}
+                iconName="local-florist"
+                outline
+              />
+            ]}
+          />
+        </View>
       </View>
     ) : null;
   }
@@ -260,5 +316,12 @@ const styles = StyleSheet.create({
   containerOnMapTop: {
     ...StyleSheet.absoluteFillObject,
     top: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
+  },
+  containerOnMapRight: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    bottom: 51,
+    flexDirection: 'column'
   }
 });

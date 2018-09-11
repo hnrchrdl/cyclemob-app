@@ -15,6 +15,20 @@ const TILE_URLS = {
   ocm: `https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=${thunderforest_api_key}`
 };
 
+function getRegionFromPositionAndZoom(position, zoomFactor) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  const latitudeDelta = 0.004 * zoomFactor;
+  const longitudeDelta = latitudeDelta * ASPECT_RATIO;
+  const region = {
+    latitude,
+    longitude,
+    latitudeDelta,
+    longitudeDelta
+  };
+  return region;
+}
+
 class Map extends React.PureComponent {
   map = null;
 
@@ -28,6 +42,7 @@ class Map extends React.PureComponent {
           JSON.stringify(prevProps.marker) !==
             JSON.stringify(this.props.marker))
       ) {
+        // Route or Marker changed.
         const coords = [
           ...(this.props.position
             ? [
@@ -47,7 +62,16 @@ class Map extends React.PureComponent {
           });
         }
       } else if (this.props.position && this.props.followPosition && this.map) {
+        // Position or FollowPosition changed.
         this.map.animateToCoordinate(this.props.position.coords);
+      }
+      if (this.props.zoom && prevProps.zoom !== this.props.zoom) {
+        // Zoom changed.
+        const region = getRegionFromPositionAndZoom(
+          this.props.position,
+          this.props.zoom
+        );
+        this.map.animateToRegion(region);
       }
     }
   }
@@ -71,17 +95,8 @@ class Map extends React.PureComponent {
       return null;
     }
 
-    const { marker, route } = this.props;
-    const latitude = this.props.position.coords.latitude;
-    const longitude = this.props.position.coords.longitude;
-    const latitudeDelta = 0.02;
-    const longitudeDelta = latitudeDelta * ASPECT_RATIO;
-    const region = {
-      latitude,
-      longitude,
-      latitudeDelta,
-      longitudeDelta
-    };
+    const { marker, route, position } = this.props;
+    const region = getRegionFromPositionAndZoom(position, 5);
 
     return (
       <MapView
@@ -140,7 +155,8 @@ Map.propTypes = {
       longitude: PropTypes.number
     })
   ),
-  onMapLongPressed: PropTypes.func
+  onMapLongPressed: PropTypes.func,
+  zoom: PropTypes.number // 0 for all zoomed in, higher numbers for wider map zoom
 };
 
 const styles = StyleSheet.create({
