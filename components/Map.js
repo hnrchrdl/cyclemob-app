@@ -76,9 +76,9 @@ class Map extends React.PureComponent {
     }
   }
 
-  onMapLongPress = () => {
+  onMapLongPressed = e => {
     if (this.props.onMapLongPressed) {
-      this.props.onMapLongPressed();
+      this.props.onMapLongPressed(e);
     }
   };
 
@@ -105,7 +105,8 @@ class Map extends React.PureComponent {
         mapType={MAP_TYPES.NONE}
         initialRegion={region}
         showsUserLocation={true}
-        onLongPress={this.onMapLongPress}
+        onLongPress={this.onMapLongPressed}
+        showsScale={true}
       >
         <UrlTile urlTemplate={TILE_URLS.ocm} zIndex={-1} />
         {marker &&

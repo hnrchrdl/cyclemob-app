@@ -15,18 +15,11 @@ MarkerDetails.propTypes = {
     })
   }).isRequired,
   onSetAsTarget: PropTypes.func.isRequired,
-  onSetAsWaypoint: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired
 };
 
-function MarkerDetails({
-  marker,
-  onClose,
-  onSetAsTarget,
-  onSetAsWaypoint,
-  onRemove
-}) {
+function MarkerDetails({ marker, onClose, onSetAsTarget, onRemove }) {
   return (
     <View style={styles.container}>
       <View style={styles.containerInner}>

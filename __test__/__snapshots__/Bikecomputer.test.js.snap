@@ -50,7 +50,7 @@ ShallowWrapper {
               }
             }
           >
-            --
+            
           </Text>
         </Component>,
         <Component
@@ -85,7 +85,7 @@ ShallowWrapper {
               }
             }
           >
-            --
+            -
           </Text>
         </Component>,
       ],
@@ -94,8 +94,8 @@ ShallowWrapper {
         "flex": 1,
         "flexDirection": "row",
         "opacity": 0.9,
-        "paddingBottom": 4,
-        "paddingTop": 4,
+        "paddingBottom": 2,
+        "paddingTop": 2,
       },
     },
     "ref": null,
@@ -128,7 +128,7 @@ ShallowWrapper {
                 }
               }
             >
-              --
+              
             </Text>,
           ],
           "style": Object {
@@ -164,14 +164,14 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "--",
+              "children": "",
               "ellipsizeMode": "tail",
               "style": Object {
                 "fontSize": 14,
               },
             },
             "ref": null,
-            "rendered": "--",
+            "rendered": "",
             "type": [Function],
           },
         ],
@@ -205,7 +205,7 @@ ShallowWrapper {
                 }
               }
             >
-              --
+              -
             </Text>,
           ],
           "style": Object {
@@ -241,14 +241,14 @@ ShallowWrapper {
             "props": Object {
               "accessible": true,
               "allowFontScaling": true,
-              "children": "--",
+              "children": "-",
               "ellipsizeMode": "tail",
               "style": Object {
                 "fontSize": 14,
               },
             },
             "ref": null,
-            "rendered": "--",
+            "rendered": "-",
             "type": [Function],
           },
         ],
@@ -296,7 +296,7 @@ ShallowWrapper {
                 }
               }
             >
-              --
+              
             </Text>
           </Component>,
           <Component
@@ -331,7 +331,7 @@ ShallowWrapper {
                 }
               }
             >
-              --
+              -
             </Text>
           </Component>,
         ],
@@ -340,8 +340,8 @@ ShallowWrapper {
           "flex": 1,
           "flexDirection": "row",
           "opacity": 0.9,
-          "paddingBottom": 4,
-          "paddingTop": 4,
+          "paddingBottom": 2,
+          "paddingTop": 2,
         },
       },
       "ref": null,
@@ -374,7 +374,7 @@ ShallowWrapper {
                   }
                 }
               >
-                --
+                
               </Text>,
             ],
             "style": Object {
@@ -410,14 +410,14 @@ ShallowWrapper {
               "props": Object {
                 "accessible": true,
                 "allowFontScaling": true,
-                "children": "--",
+                "children": "",
                 "ellipsizeMode": "tail",
                 "style": Object {
                   "fontSize": 14,
                 },
               },
               "ref": null,
-              "rendered": "--",
+              "rendered": "",
               "type": [Function],
             },
           ],
@@ -451,7 +451,7 @@ ShallowWrapper {
                   }
                 }
               >
-                --
+                -
               </Text>,
             ],
             "style": Object {
@@ -487,14 +487,14 @@ ShallowWrapper {
               "props": Object {
                 "accessible": true,
                 "allowFontScaling": true,
-                "children": "--",
+                "children": "-",
                 "ellipsizeMode": "tail",
                 "style": Object {
                   "fontSize": 14,
                 },
               },
               "ref": null,
-              "rendered": "--",
+              "rendered": "-",
               "type": [Function],
             },
           ],

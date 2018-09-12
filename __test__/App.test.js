@@ -20,8 +20,6 @@ it('watches position changes', done => {
   const tree = shallow(<App />);
   setTimeout(() => {
     expect(tree.state('position')).not.toBeNull();
-    tree.setState({ position: null });
-    expect(tree.getElement()).toBeNull();
     done();
   });
 });

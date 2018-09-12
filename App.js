@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Platform } from 'react-native';
+import { StyleSheet, View, Platform, Text } from 'react-native';
 import { Constants } from 'expo';
 
 import Button from './components/Button';
@@ -123,28 +123,6 @@ export default class App extends React.Component {
     );
   };
 
-  setWaypoint = waypoint => {
-    // this.setState(
-    //   state => ({
-    //     waypoints: [...state.waypoints, waypoint]
-    //   }),
-    //   () => {
-    //     this.updateRoute();
-    //   }
-    // );
-  };
-
-  removeWaypoint = waypoint => {
-    // this.setState(
-    //   state => ({
-    //     waypoins: state.waypoints.filter(point => point.id !== waypoint.id)
-    //   }),
-    //   () => {
-    //     this.updateRoute();
-    //   }
-    // );
-  };
-
   updateRoute = () => {
     if (!this.state.target) {
       this.setState({
@@ -196,6 +174,10 @@ export default class App extends React.Component {
     }, 1000);
   };
 
+  handleLocationSelect = e => {
+    console.log(e);
+  };
+
   render() {
     const {
       position,
@@ -215,6 +197,7 @@ export default class App extends React.Component {
           marker={marker}
           activeMarkerId={markerDetails ? markerDetails.id : null}
           onMarkerPressed={this.showMarkerDetails}
+          onMapLongPressed={this.handleLocationSelect}
           position={position}
           route={targetRoute}
           zoom={zoom}
@@ -264,44 +247,38 @@ export default class App extends React.Component {
             />
           )}
         </View>
-        <View style={styles.containerOnMapRight}>
-          <ToolbarVertical
-            items={[
-              <Button
-                key={1}
-                onPress={this.zoomCurried(300)}
-                iconName="landscape"
-                outline
-              />,
-              <Button
-                key={2}
-                onPress={this.zoomCurried(100)}
-                iconName="exposure-plus-1"
-                outline
-              />,
-              <Button
-                key={3}
-                onPress={this.zoomCurried(25)}
-                iconName="exposure-zero"
-                outline
-              />,
-              <Button
-                key={4}
-                onPress={this.zoomCurried(10)}
-                iconName="exposure-neg-1"
-                outline
-              />,
-              <Button
-                key={5}
-                onPress={this.zoomCurried(2)}
-                iconName="local-florist"
-                outline
-              />
-            ]}
-          />
-        </View>
+        {!showSearch && (
+          <View style={styles.containerOnMapRight}>
+            <ToolbarVertical
+              items={[
+                <Button
+                  key={2}
+                  onPress={this.zoomCurried(100)}
+                  iconName="terrain"
+                  outline
+                />,
+                <Button
+                  key={3}
+                  onPress={this.zoomCurried(25)}
+                  iconName="vertical-align-center"
+                  outline
+                />,
+                <Button
+                  key={5}
+                  onPress={this.zoomCurried(2)}
+                  iconName="local-florist"
+                  outline
+                />
+              ]}
+            />
+          </View>
+        )}
       </View>
-    ) : null;
+    ) : (
+      <View style={styles.containerCentered}>
+        <Text>Trying to get your device's current position...</Text>
+      </View>
+    );
   }
 }
 
@@ -323,5 +300,10 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 51,
     flexDirection: 'column'
+  },
+  containerCentered: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

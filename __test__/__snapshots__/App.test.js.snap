@@ -22,6 +22,7 @@ ShallowWrapper {
           activeMarkerId={null}
           followPosition={true}
           marker={Array []}
+          onMapLongPressed={[Function]}
           onMarkerPressed={[Function]}
           position={
             Object {
@@ -84,22 +85,12 @@ ShallowWrapper {
             items={
               Array [
                 <Button
-                  iconName="landscape"
+                  iconName="terrain"
                   onPress={[Function]}
                   outline={true}
                 />,
                 <Button
-                  iconName="exposure-plus-1"
-                  onPress={[Function]}
-                  outline={true}
-                />,
-                <Button
-                  iconName="exposure-zero"
-                  onPress={[Function]}
-                  outline={true}
-                />,
-                <Button
-                  iconName="exposure-neg-1"
+                  iconName="vertical-align-center"
                   onPress={[Function]}
                   outline={true}
                 />,
@@ -131,6 +122,7 @@ ShallowWrapper {
           "activeMarkerId": null,
           "followPosition": true,
           "marker": Array [],
+          "onMapLongPressed": [Function],
           "onMarkerPressed": [Function],
           "position": Object {
             "coords": Object {
@@ -238,22 +230,12 @@ ShallowWrapper {
             items={
               Array [
                 <Button
-                  iconName="landscape"
+                  iconName="terrain"
                   onPress={[Function]}
                   outline={true}
                 />,
                 <Button
-                  iconName="exposure-plus-1"
-                  onPress={[Function]}
-                  outline={true}
-                />,
-                <Button
-                  iconName="exposure-zero"
-                  onPress={[Function]}
-                  outline={true}
-                />,
-                <Button
-                  iconName="exposure-neg-1"
+                  iconName="vertical-align-center"
                   onPress={[Function]}
                   outline={true}
                 />,
@@ -281,22 +263,12 @@ ShallowWrapper {
           "props": Object {
             "items": Array [
               <Button
-                iconName="landscape"
+                iconName="terrain"
                 onPress={[Function]}
                 outline={true}
               />,
               <Button
-                iconName="exposure-plus-1"
-                onPress={[Function]}
-                outline={true}
-              />,
-              <Button
-                iconName="exposure-zero"
-                onPress={[Function]}
-                outline={true}
-              />,
-              <Button
-                iconName="exposure-neg-1"
+                iconName="vertical-align-center"
                 onPress={[Function]}
                 outline={true}
               />,
@@ -327,6 +299,7 @@ ShallowWrapper {
             activeMarkerId={null}
             followPosition={true}
             marker={Array []}
+            onMapLongPressed={[Function]}
             onMarkerPressed={[Function]}
             position={
               Object {
@@ -389,22 +362,12 @@ ShallowWrapper {
               items={
                 Array [
                   <Button
-                    iconName="landscape"
+                    iconName="terrain"
                     onPress={[Function]}
                     outline={true}
                   />,
                   <Button
-                    iconName="exposure-plus-1"
-                    onPress={[Function]}
-                    outline={true}
-                  />,
-                  <Button
-                    iconName="exposure-zero"
-                    onPress={[Function]}
-                    outline={true}
-                  />,
-                  <Button
-                    iconName="exposure-neg-1"
+                    iconName="vertical-align-center"
                     onPress={[Function]}
                     outline={true}
                   />,
@@ -436,6 +399,7 @@ ShallowWrapper {
             "activeMarkerId": null,
             "followPosition": true,
             "marker": Array [],
+            "onMapLongPressed": [Function],
             "onMarkerPressed": [Function],
             "position": Object {
               "coords": Object {
@@ -543,22 +507,12 @@ ShallowWrapper {
               items={
                 Array [
                   <Button
-                    iconName="landscape"
+                    iconName="terrain"
                     onPress={[Function]}
                     outline={true}
                   />,
                   <Button
-                    iconName="exposure-plus-1"
-                    onPress={[Function]}
-                    outline={true}
-                  />,
-                  <Button
-                    iconName="exposure-zero"
-                    onPress={[Function]}
-                    outline={true}
-                  />,
-                  <Button
-                    iconName="exposure-neg-1"
+                    iconName="vertical-align-center"
                     onPress={[Function]}
                     outline={true}
                   />,
@@ -586,22 +540,12 @@ ShallowWrapper {
             "props": Object {
               "items": Array [
                 <Button
-                  iconName="landscape"
+                  iconName="terrain"
                   onPress={[Function]}
                   outline={true}
                 />,
                 <Button
-                  iconName="exposure-plus-1"
-                  onPress={[Function]}
-                  outline={true}
-                />,
-                <Button
-                  iconName="exposure-zero"
-                  onPress={[Function]}
-                  outline={true}
-                />,
-                <Button
-                  iconName="exposure-neg-1"
+                  iconName="vertical-align-center"
                   onPress={[Function]}
                   outline={true}
                 />,

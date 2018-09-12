@@ -45,6 +45,7 @@ ShallowWrapper {
       },
       "mapType": "None",
       "onLongPress": [Function],
+      "showsScale": true,
       "showsUserLocation": true,
       "style": Object {
         "bottom": 0,
@@ -94,6 +95,7 @@ ShallowWrapper {
         },
         "mapType": "None",
         "onLongPress": [Function],
+        "showsScale": true,
         "showsUserLocation": true,
         "style": Object {
           "bottom": 0,

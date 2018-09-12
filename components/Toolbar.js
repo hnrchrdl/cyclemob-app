@@ -43,7 +43,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     height: 50,
-    backgroundColor: 'rgb(255,255,255)'
+    backgroundColor: '#fff',
+    opacity: 0.9
   },
   toolbarItem: {
     flex: 1,
