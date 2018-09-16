@@ -13,7 +13,7 @@ it('should call autocomplete service with correct urls', () => {
   );
 
   expect(mockAxios.get).toHaveBeenCalledWith(
-    'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=testinput&location=50,10&radius=100000&key=mock_gmaps_api_key&session_token=random_session_token'
+    'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=testinput&location=50,10&radius=150000&key=mock_gmaps_api_key&session_token=random_session_token'
   );
 });
 
