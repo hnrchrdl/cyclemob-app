@@ -11,8 +11,13 @@ import Button from './Button';
 import PropTypes from 'prop-types';
 import { getPlacesAutocomplete, getPlaceDetails } from '../lib/gmaps-api';
 import { createUUID } from '../lib/helper';
+import {
+  saveRecentSearchResult,
+  getRecentSearchResults,
+  clearRecentSearchResults
+} from '../lib/persister';
 import { debounce } from 'lodash';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 class Search extends React.PureComponent {
   static propTypes = {
@@ -37,8 +42,17 @@ class Search extends React.PureComponent {
     super();
     this.state = {
       result: [],
+      recentSearchResults: [],
       sessionToken: createUUID()
     };
+  }
+
+  componentDidMount() {
+    getRecentSearchResults().then(recentSearchResults => {
+      this.setState({
+        recentSearchResults
+      });
+    });
   }
 
   onSearchTextChange = input => {
@@ -55,6 +69,13 @@ class Search extends React.PureComponent {
     getPlaceDetails(place_id, this.state.sessionToken).then(result => {
       this.props.onItemSelect(result);
     });
+    saveRecentSearchResult(item);
+  };
+  clearRecentSearchResults = () => {
+    this.setState({
+      recentSearchResults: []
+    });
+    clearRecentSearchResults();
   };
   render() {
     return (
@@ -72,8 +93,7 @@ class Search extends React.PureComponent {
             />
           </View>
         </View>
-        {this.state.result &&
-          this.state.result.length > 0 && (
+        {this.state.result && this.state.result.length > 0 ? (
           <View style={styles.resultContainer}>
             <FlatList
               data={this.state.result}
@@ -86,6 +106,31 @@ class Search extends React.PureComponent {
               )}
               keyboardShouldPersistTaps="handled"
             />
+          </View>
+        ) : (
+          <View style={styles.resultContainer}>
+            {this.state.recentSearchResults &&
+              this.state.recentSearchResults.length > 0 && (
+              <React.Fragment>
+                <View style={styles.recentSearchHeaderContainer}>
+                  <Text>Recent Searches:</Text>
+                  <Text onPress={this.clearRecentSearchResults}>
+                    <MaterialIcons name="clear" size={14} />
+                  </Text>
+                </View>
+                <FlatList
+                  data={this.state.recentSearchResults}
+                  renderItem={({ item }) => (
+                    <Search.ResultItem
+                      key={item.id}
+                      item={item}
+                      onItemSelect={this.onSearchResultSelect}
+                    />
+                  )}
+                  keyboardShouldPersistTaps="handled"
+                />
+              </React.Fragment>
+            )}
           </View>
         )}
       </View>
@@ -166,6 +211,10 @@ const styles = StyleSheet.create({
   },
   resultItemVicinity: {
     fontSize: 10
+  },
+  recentSearchHeaderContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });
 

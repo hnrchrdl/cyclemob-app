@@ -1,7 +1,7 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19002,
-  "packagerPid": 31141,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://b5-gy3.hnrchrdl.cyclemob-app.exp.direct",
   "packagerNgrokUrl": "https://packager.b5-gy3.hnrchrdl.cyclemob-app.exp.direct",
   "ngrokPid": 32336

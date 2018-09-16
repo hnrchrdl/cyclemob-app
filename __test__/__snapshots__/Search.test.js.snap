@@ -71,7 +71,17 @@ ShallowWrapper {
             />
           </Component>
         </Component>,
-        false,
+        <Component
+          style={
+            Object {
+              "borderTopColor": "#eee",
+              "borderTopWidth": 0.5,
+              "marginLeft": 10,
+              "marginRight": 10,
+              "padding": 10,
+            }
+          }
+        />,
       ],
       "style": Object {
         "backgroundColor": "#fff",
@@ -208,7 +218,24 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
-      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": false,
+          "style": Object {
+            "borderTopColor": "#eee",
+            "borderTopWidth": 0.5,
+            "marginLeft": 10,
+            "marginRight": 10,
+            "padding": 10,
+          },
+        },
+        "ref": null,
+        "rendered": false,
+        "type": [Function],
+      },
     ],
     "type": [Function],
   },
@@ -261,7 +288,17 @@ ShallowWrapper {
               />
             </Component>
           </Component>,
-          false,
+          <Component
+            style={
+              Object {
+                "borderTopColor": "#eee",
+                "borderTopWidth": 0.5,
+                "marginLeft": 10,
+                "marginRight": 10,
+                "padding": 10,
+              }
+            }
+          />,
         ],
         "style": Object {
           "backgroundColor": "#fff",
@@ -398,7 +435,24 @@ ShallowWrapper {
           ],
           "type": [Function],
         },
-        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": false,
+            "style": Object {
+              "borderTopColor": "#eee",
+              "borderTopWidth": 0.5,
+              "marginLeft": 10,
+              "marginRight": 10,
+              "padding": 10,
+            },
+          },
+          "ref": null,
+          "rendered": false,
+          "type": [Function],
+        },
       ],
       "type": [Function],
     },
@@ -1034,7 +1088,17 @@ ShallowWrapper {
             />
           </Component>
         </Component>,
-        false,
+        <Component
+          style={
+            Object {
+              "borderTopColor": "#eee",
+              "borderTopWidth": 0.5,
+              "marginLeft": 10,
+              "marginRight": 10,
+              "padding": 10,
+            }
+          }
+        />,
       ],
       "style": Object {
         "backgroundColor": "#fff",
@@ -1171,7 +1235,24 @@ ShallowWrapper {
         ],
         "type": [Function],
       },
-      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": false,
+          "style": Object {
+            "borderTopColor": "#eee",
+            "borderTopWidth": 0.5,
+            "marginLeft": 10,
+            "marginRight": 10,
+            "padding": 10,
+          },
+        },
+        "ref": null,
+        "rendered": false,
+        "type": [Function],
+      },
     ],
     "type": [Function],
   },
@@ -1224,7 +1305,17 @@ ShallowWrapper {
               />
             </Component>
           </Component>,
-          false,
+          <Component
+            style={
+              Object {
+                "borderTopColor": "#eee",
+                "borderTopWidth": 0.5,
+                "marginLeft": 10,
+                "marginRight": 10,
+                "padding": 10,
+              }
+            }
+          />,
         ],
         "style": Object {
           "backgroundColor": "#fff",
@@ -1361,7 +1452,24 @@ ShallowWrapper {
           ],
           "type": [Function],
         },
-        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": false,
+            "style": Object {
+              "borderTopColor": "#eee",
+              "borderTopWidth": 0.5,
+              "marginLeft": 10,
+              "marginRight": 10,
+              "padding": 10,
+            },
+          },
+          "ref": null,
+          "rendered": false,
+          "type": [Function],
+        },
       ],
       "type": [Function],
     },
